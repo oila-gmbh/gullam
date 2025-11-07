@@ -8,21 +8,20 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts for a modern, clean look -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-    </style>
+    <link href="./common.css" rel="stylesheet">
 </head>
 <body class="bg-neutral-900 text-neutral-100 min-h-screen flex items-center justify-center p-4">
 
     <!-- Main menu container with responsive padding and max-w-width -->
-    <div class="w-full max-w-4xl mx-auto px-4 py-8 md:py-16">
+    <div class="w-full max-w-4xl mx-auto px-4 py-8 md:py-16 flex flex-col align-center">
 
         <!-- Restaurant title -->
         <header class="text-center mb-12 md:mb-16 flex flex-col">
             <img src='./images/logotype_description_white.svg' alt="GULLAM Премиальный ресторан" class="flex self-center"/>
-            <p class="text-sm md:text-base text-neutral-400 mt-2">Меню напитков</p>
+            <nav class="nav-container self-center no-print">
+                <a href="./index.html" class="nav-link">Основное</a>
+                <a href="#" class="nav-link nav-link--active">Напитки</a>
+            </nav>
         </header>
 
         <!-- Cold Beverages section -->
@@ -32,7 +31,7 @@
                 <!-- Menu Item: Pepsi -->
                 <div class="flex flex-col sm:flex-row justify-between items-start border-b border-neutral-700 pb-4">
                     <div class="flex items-center gap-4">
-                        <img src="https://images.unsplash.com/photo-1620253509267-313d4b6842e4?w=100&h=100&fit=crop&q=80" alt="Pepsi" class="w-20 h-20 rounded-full object-cover"/>
+                        <img src="./optimized/pepsi.webp" alt="Pepsi" class="w-20 h-20 rounded-full object-cover"/>
                         <div>
                             <h3 class="text-lg font-medium mb-1">Пепси ЖБ</h3>
                             <p class="text-sm text-neutral-400">0.33 л.</p>
@@ -44,7 +43,7 @@
                 <!-- Menu Item: Zelenokumskoe -->
                 <div class="flex flex-col sm:flex-row justify-between items-start border-b border-neutral-700 pb-4">
                     <div class="flex items-center gap-4">
-                        <img src="https://placehold.co/100x100/505050/ffffff?text=Zelenokumskoe" alt="Зеленокумское" class="w-20 h-20 rounded-full object-cover"/>
+                        <img src="./optimized/zelenokumsk.webp" alt="Зеленокумское" class="w-20 h-20 rounded-full object-cover"/>
                         <div>
                             <h3 class="text-lg font-medium mb-1">Зеленокумское</h3>
                             <p class="text-sm text-neutral-400">Минеральная вода, 0.5 л.</p>
@@ -56,7 +55,7 @@
                 <!-- Menu Item: Stom Peach -->
                 <div class="flex flex-col sm:flex-row justify-between items-start border-b border-neutral-700 pb-4">
                     <div class="flex items-center gap-4">
-                        <img src="https://placehold.co/100x100/505050/ffffff?text=Peach" alt="Стом Персик" class="w-20 h-20 rounded-full object-cover"/>
+                        <img src="./optimized/stom.webp" alt="Стом Персик" class="w-20 h-20 rounded-full object-cover"/>
                         <div>
                             <h3 class="text-lg font-medium mb-1">Стом Персик</h3>
                             <p class="text-sm text-neutral-400">Газированный напиток.</p>
@@ -66,16 +65,16 @@
                 </div>
                 
                 <!-- Menu Item: Go Champ -->
-                <div class="flex flex-col sm:flex-row justify-between items-start">
+                <!-- <div class="flex flex-col sm:flex-row justify-between items-start">
                     <div class="flex items-center gap-4">
-                        <img src="https://placehold.co/100x100/505050/ffffff?text=Go+Champ" alt="Go Champ" class="w-20 h-20 rounded-full object-cover"/>
+                        <img src="./optimized/stom.webp" alt="Go Champ" class="w-20 h-20 rounded-full object-cover"/>
                         <div>
                             <h3 class="text-lg font-medium mb-1">Go Champ</h3>
                             <p class="text-sm text-neutral-400">Энергетический напиток.</p>
                         </div>
                     </div>
                     <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">150</span>
-                </div>
+                </div> -->
             </div>
         </section>
 
@@ -86,7 +85,7 @@
                 <!-- Menu Item: Champagne Bubbles Tea -->
                 <div class="flex flex-col sm:flex-row justify-between items-start border-b border-neutral-700 pb-4">
                     <div class="flex items-center gap-4">
-                        <img src="https://images.unsplash.com/photo-1542361732-c167b0b2e293?w=100&h=100&fit=crop&q=80" alt="Чай Брызги шампанского" class="w-20 h-20 rounded-full object-cover"/>
+                        <img src="./optimized/tea.webp" alt="Чай Брызги шампанского" class="w-20 h-20 rounded-full object-cover"/>
                         <div>
                             <h3 class="text-lg font-medium mb-1">Чай Брызги шампанского</h3>
                             <p class="text-sm text-neutral-400">Ароматный черный чай с нотками шампанского.</p>
@@ -98,7 +97,7 @@
                 <!-- Menu Item: Wild Cherry Tea -->
                 <div class="flex flex-col sm:flex-row justify-between items-start border-b border-neutral-700 pb-4">
                     <div class="flex items-center gap-4">
-                        <img src="https://images.unsplash.com/photo-1563721345941-8f5b80a56828?w=100&h=100&fit=crop&q=80" alt="Чай Дикая вишня" class="w-20 h-20 rounded-full object-cover"/>
+                        <img src="./optimized/tea.webp" alt="Чай Дикая вишня" class="w-20 h-20 rounded-full object-cover"/>
                         <div>
                             <h3 class="text-lg font-medium mb-1">Чай Дикая вишня</h3>
                             <p class="text-sm text-neutral-400">Фруктовый чай с ярким вкусом вишни.</p>
@@ -110,7 +109,7 @@
                 <!-- Menu Item: Naughty Fruit Tea -->
                 <div class="flex flex-col sm:flex-row justify-between items-start border-b border-neutral-700 pb-4">
                     <div class="flex items-center gap-4">
-                        <img src="https://images.unsplash.com/photo-1582046424576-90403e839e14?w=100&h=100&fit=crop&q=80" alt="Чай Наглый фрукт" class="w-20 h-20 rounded-full object-cover"/>
+                        <img src="./optimized/tea.webp" alt="Чай Наглый фрукт" class="w-20 h-20 rounded-full object-cover"/>
                         <div>
                             <h3 class="text-lg font-medium mb-1">Чай Наглый фрукт</h3>
                             <p class="text-sm text-neutral-400">Экзотический фруктовый микс.</p>
@@ -122,7 +121,7 @@
                 <!-- Menu Item: Espresso -->
                 <div class="flex flex-col sm:flex-row justify-between items-start border-b border-neutral-700 pb-4">
                     <div class="flex items-center gap-4">
-                        <img src="https://images.unsplash.com/photo-1579992383824-2c1b123d46f5?w=100&h=100&fit=crop&q=80" alt="Эспрессо" class="w-20 h-20 rounded-full object-cover"/>
+                        <img src="./optimized/coffee.webp" alt="Эспрессо" class="w-20 h-20 rounded-full object-cover"/>
                         <div>
                             <h3 class="text-lg font-medium mb-1">Эспрессо</h3>
                             <p class="text-sm text-neutral-400">Крепкий и ароматный. 30 мл.</p>
@@ -134,7 +133,7 @@
                 <!-- Menu Item: Cappuccino -->
                 <div class="flex flex-col sm:flex-row justify-between items-start border-b border-neutral-700 pb-4">
                     <div class="flex items-center gap-4">
-                        <img src="https://images.unsplash.com/photo-1517724218671-15822f676449?w=100&h=100&fit=crop&q=80" alt="Капучино" class="w-20 h-20 rounded-full object-cover">
+                        <img src="./optimized/coffee.webp" alt="Капучино" class="w-20 h-20 rounded-full object-cover">
                         <div>
                             <h3 class="text-lg font-medium mb-1">Капучино</h3>
                             <p class="text-sm text-neutral-400">Классический кофе с молочной пенкой. 200 мл.</p>
@@ -146,7 +145,7 @@
                 <!-- Menu Item: Latte -->
                 <div class="flex flex-col sm:flex-row justify-between items-start">
                     <div class="flex items-center gap-4">
-                        <img src="https://images.unsplash.com/photo-1541701314352-78d128d5d4d3?w=100&h=100&fit=crop&q=80" alt="Латте" class="w-20 h-20 rounded-full object-cover">
+                        <img src="./optimized/coffee.webp" alt="Латте" class="w-20 h-20 rounded-full object-cover">
                         <div>
                             <h3 class="text-lg font-medium mb-1">Латте</h3>
                             <p class="text-sm text-neutral-400">Нежный кофейный напиток с молоком. 250 мл.</p>
@@ -164,7 +163,7 @@
                  <!-- Menu Item: Strawberry Mojito -->
                 <div class="flex flex-col sm:flex-row justify-between items-start border-b border-neutral-700 pb-4">
                     <div class="flex items-center gap-4">
-                        <img src="https://images.unsplash.com/photo-1565431327170-c5344d5c4b18?w=100&h=100&fit=crop&q=80" alt="Клубничный Мохито" class="w-20 h-20 rounded-full object-cover">
+                        <img src="./optimized/mohito_strawberry.webp" alt="Клубничный Мохито" class="w-20 h-20 rounded-full object-cover">
                         <div>
                             <h3 class="text-lg font-medium mb-1">Мохито клубничное</h3>
                             <p class="text-sm text-neutral-400">Свежий мохито с ягодами клубники.</p>
@@ -176,7 +175,7 @@
                 <!-- Menu Item: Classic Mojito -->
                 <div class="flex flex-col sm:flex-row justify-between items-start border-b border-neutral-700 pb-4">
                     <div class="flex items-center gap-4">
-                        <img src="https://images.unsplash.com/photo-1563255146-f949514e21a2?w=100&h=100&fit=crop&q=80" alt="Классический Мохито" class="w-20 h-20 rounded-full object-cover">
+                        <img src="./optimized/mohito_classic.webp" alt="Классический Мохито" class="w-20 h-20 rounded-full object-cover">
                         <div>
                             <h3 class="text-lg font-medium mb-1">Мохито классическое</h3>
                             <p class="text-sm text-neutral-400">Свежий и мятный. 300 мл.</p>
@@ -188,7 +187,7 @@
                 <!-- Menu Item: Berry Lemonade -->
                 <div class="flex flex-col sm:flex-row justify-between items-start border-b border-neutral-700 pb-4">
                     <div class="flex items-center gap-4">
-                        <img src="https://images.unsplash.com/photo-1628178822081-37f26d2e666a?w=100&h=100&fit=crop&q=80" alt="Ягодный Лимонад" class="w-20 h-20 rounded-full object-cover">
+                        <img src="./optimized/fruit_drink.webp" alt="Ягодный Лимонад" class="w-20 h-20 rounded-full object-cover">
                         <div>
                             <h3 class="text-lg font-medium mb-1">Ягодный лимонад</h3>
                             <p class="text-sm text-neutral-400">Свежие ягоды, мята, лимон.</p>
@@ -200,7 +199,7 @@
                 <!-- Menu Item: Classic Lemonade -->
                 <div class="flex flex-col sm:flex-row justify-between items-start">
                     <div class="flex items-center gap-4">
-                        <img src="https://images.unsplash.com/photo-1621252119129-9b908c6c5960?w=100&h=100&fit=crop&q=80" alt="Классический Лимонад" class="w-20 h-20 rounded-full object-cover">
+                        <img src="./optimized/classic_drink.webp" alt="Классический Лимонад" class="w-20 h-20 rounded-full object-cover">
                         <div>
                             <h3 class="text-lg font-medium mb-1">Классический лимонад</h3>
                             <p class="text-sm text-neutral-400">Лимон, сахар, вода.</p>
@@ -210,7 +209,34 @@
                 </div>
             </div>
         </section>
+        <!-- Footer -->
+        <footer class="mt-24 pt-8 w-1/2 self-center text-center border-t border-neutral-700 text-neutral-400 space-y-4">
+            <!-- Location -->
+            <div class="flex items-center justify-center space-x-2">
+                <svg fill="#a1a1a1" width="14px" height="14px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" stroke="#a1a1a1">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                    <g id="SVGRepo_iconCarrier">
+                        <title></title>
+                        <g id="location">
+                            <path d="M16,1A11,11,0,0,0,5,12C5,23.24,15,30.51,15.42,30.81a1,1,0,0,0,1.16,0C17,30.51,27,23.24,27,12A11,11,0,0,0,16,1Zm0,16a5,5,0,1,1,5-5A5,5,0,0,1,16,17Z"></path>
+                        </g>
+                    </g>
+                </svg>
+                <a href="https://yandex.com/maps/-/CLqjaTO5" target="_blank" rel="noopener noreferrer" class="text-lg hover:underline">C. Валерик, ул. Гайрбекова, д. 64</a>
+            </div>
+            <!-- Phone Number -->
+            <div class="flex items-center justify-center space-x-2">
+                <svg width="14px" height="14px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#a1a1a1">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                    <g id="SVGRepo_iconCarrier">
+                        <path d="M2.00589 4.54166C1.905 3.11236 3.11531 2 4.54522 2H7.60606C8.34006 2 9.00207 2.44226 9.28438 3.1212L10.5643 6.19946C10.8761 6.94932 10.6548 7.81544 10.0218 8.32292L9.22394 8.96254C8.86788 9.24798 8.74683 9.74018 8.95794 10.1448C10.0429 12.2241 11.6464 13.9888 13.5964 15.2667C14.008 15.5364 14.5517 15.4291 14.8588 15.0445L15.6902 14.003C16.1966 13.3687 17.0609 13.147 17.8092 13.4594L20.8811 14.742C21.5587 15.0249 22 15.6883 22 16.4238V19.5C22 20.9329 20.8489 22.0955 19.4226 21.9941C10.3021 21.3452 2.65247 13.7017 2.00589 4.54166Z" fill="#a1a1a1"></path>
+                    </g>
+                </svg>
+                <a href="tel:+79388895574" class="text-lg hover:underline">+7 (938) 889-55-74</a>
+            </div>
+        </footer>
     </div>
-
 </body>
 </html>
