@@ -20,7 +20,7 @@
 <body class="bg-neutral-900 text-neutral-100 min-h-screen flex items-center justify-center p-4">
 
     <!-- Main menu container with responsive padding and max-w-width -->
-    <div class="w-full max-w-4xl mx-auto px-4 py-8 md:py-16 flex flex-col align-center">
+    <div class="w-full max-w-4xl mx-auto px-4 py-8 md:py-16 flex flex-col align-center gap-10">
 
         <!-- Restaurant title -->
         <header class="text-center mb-12 md:mb-16 flex flex-col">
@@ -31,14 +31,155 @@
             </nav>
         </header>
 
-        <!-- Cold Beverages section -->
-        <section class="mb-10">
+        <!-- Cold drinks section -->
+        <section>
             <h2 class="text-xl md:text-2xl font-semibold tracking-wider uppercase text-center mb-6">Х О Л О Д Н Ы Е &nbsp; Н А П И Т К И</h2>
             <div class="space-y-6">
-                <!-- Menu Item: Pepsi -->
-                <div class="flex flex-col sm:flex-row justify-between items-start border-b border-neutral-700 pb-4">
+                 <!-- Menu Item: Strawberry Mojito -->
+                <div class="flex flex-row justify-between items-center border-b border-neutral-700 pb-4">
                     <div class="flex items-center gap-4">
-                        <img src="./optimized/pepsi.webp" alt="Pepsi" class="w-20 h-20 rounded-full object-cover"/>
+                        <img src="./optimized/mohito_strawberry.webp" alt="Клубничный Мохито" class="w-20 h-20 rounded-full object-cover hidden sm:block">
+                        <div>
+                            <h3 class="text-lg font-medium mb-1">Мохито клубничное</h3>
+                            <p class="text-sm text-neutral-400">Свежий мохито с ягодами клубники.</p>
+                        </div>
+                    </div>
+                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">200/350</span>
+                </div>
+
+                <!-- Menu Item: Classic Mojito -->
+                <div class="flex flex-row justify-between items-center border-b border-neutral-700 pb-4">
+                    <div class="flex items-center gap-4">
+                        <img src="./optimized/mohito_classic.webp" alt="Классический Мохито" class="w-20 h-20 rounded-full object-cover hidden sm:block">
+                        <div>
+                            <h3 class="text-lg font-medium mb-1">Мохито классическое</h3>
+                            <p class="text-sm text-neutral-400">Свежий мохито с нотками ароматной мяты.</p>
+                        </div>
+                    </div>
+                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">200/350</span>
+                </div>
+
+                <!-- Menu Item: Berry Lemonade -->
+                <div class="flex flex-row justify-between items-center border-b border-neutral-700 pb-4">
+                    <div class="flex items-center gap-4">
+                        <img src="./optimized/fruit_drink.webp" alt="Ягодный Лимонад" class="w-20 h-20 rounded-full object-cover hidden sm:block">
+                        <div>
+                            <h3 class="text-lg font-medium mb-1">Ягодный лимонад</h3>
+                            <p class="text-sm text-neutral-400">Свежие ягоды, мята и лимон.</p>
+                        </div>
+                    </div>
+                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">200/350</span>
+                </div>
+
+                <!-- Menu Item: Classic Lemonade -->
+                <div class="flex flex-row justify-between items-center border-b border-neutral-700 pb-4">
+                    <div class="flex items-center gap-4">
+                        <img src="./optimized/classic_drink.webp" alt="Классический Лимонад" class="w-20 h-20 rounded-full object-cover hidden sm:block">
+                        <div>
+                            <h3 class="text-lg font-medium mb-1">Классический лимонад</h3>
+                            <p class="text-sm text-neutral-400">Классический лимонад с лимоном.</p>
+                        </div>
+                    </div>
+                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">200/350</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hot Beverages section -->
+        <section>
+            <h2 class="text-xl md:text-2xl font-semibold tracking-wider uppercase text-center mb-6">Г О Р Я Ч И Е &nbsp; Н А П И Т К И</h2>
+            <div class="space-y-6">
+                <!-- Menu Item: Champagne Bubbles Tea -->
+                <div class="flex flex-row justify-between items-center border-b border-neutral-700 pb-4">
+                    <div class="flex items-center gap-4">
+                        <img src="./optimized/tea.webp" alt="Чай Брызги шампанского" class="w-20 h-20 rounded-full object-cover hidden sm:block"/>
+                        <div>
+                            <h3 class="text-lg font-medium mb-1">Чай Брызги шампанского</h3>
+                            <p class="text-sm text-neutral-400">Ароматный черный чай с нотками шампанского.</p>
+                        </div>
+                    </div>
+                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">200/350</span>
+                </div>
+
+                <!-- Menu Item: Wild Cherry Tea -->
+                <div class="flex flex-row justify-between items-center border-b border-neutral-700 pb-4">
+                    <div class="flex items-center gap-4">
+                        <img src="./optimized/tea.webp" alt="Чай Дикая вишня" class="w-20 h-20 rounded-full object-cover hidden sm:block"/>
+                        <div>
+                            <h3 class="text-lg font-medium mb-1">Чай Дикая вишня</h3>
+                            <p class="text-sm text-neutral-400">Фруктовый чай с ярким вкусом вишни.</p>
+                        </div>
+                    </div>
+                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">200/350</span>
+                </div>
+
+                <!-- Menu Item: Naughty Fruit Tea -->
+                <div class="flex flex-row justify-between items-center border-b border-neutral-700 pb-4">
+                    <div class="flex items-center gap-4">
+                        <img src="./optimized/tea.webp" alt="Чай Наглый фрукт" class="w-20 h-20 rounded-full object-cover hidden sm:block"/>
+                        <div>
+                            <h3 class="text-lg font-medium mb-1">Чай Наглый фрукт</h3>
+                            <p class="text-sm text-neutral-400">Экзотический фруктовый микс.</p>
+                        </div>
+                    </div>
+                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">200/350</span>
+                </div>
+
+                <div class="flex flex-row justify-between items-center border-b border-neutral-700 pb-4">
+                    <div class="flex items-center gap-4">
+                        <img src="./optimized/coffee.webp" alt="Кофе 3 в 1" class="w-20 h-20 rounded-full object-cover hidden sm:block"/>
+                        <div>
+                            <h3 class="text-lg font-medium mb-1">Кофе 3 в 1</h3>
+                            <p class="text-sm text-neutral-400">Классика. Кофе 3 в 1.</p>
+                        </div>
+                    </div>
+                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">50</span>
+                </div>
+                <!-- 
+                <div class="flex flex-row justify-between items-center border-b border-neutral-700 pb-4">
+                    <div class="flex items-center gap-4">
+                        <img src="./optimized/coffee.webp" alt="Эспрессо" class="w-20 h-20 rounded-full object-cover hidden sm:block"/>
+                        <div>
+                            <h3 class="text-lg font-medium mb-1">Эспрессо</h3>
+                            <p class="text-sm text-neutral-400">Крепкий и ароматный эспрессо.</p>
+                        </div>
+                    </div>
+                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">200</span>
+                </div>
+
+                <div class="flex flex-row justify-between items-center border-b border-neutral-700 pb-4">
+                    <div class="flex items-center gap-4">
+                        <img src="./optimized/coffee.webp" alt="Капучино" class="w-20 h-20 rounded-full object-cover hidden sm:block">
+                        <div>
+                            <h3 class="text-lg font-medium mb-1">Капучино</h3>
+                            <p class="text-sm text-neutral-400">Классический кофе с молочной пенкой.</p>
+                        </div>
+                    </div>
+                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">300</span>
+                </div>
+
+                <div class="flex flex-col sm:flex-row justify-between items-start">
+                    <div class="flex items-center gap-4">
+                        <img src="./optimized/coffee.webp" alt="Латте" class="w-20 h-20 rounded-full object-cover hidden sm:block">
+                        <div>
+                            <h3 class="text-lg font-medium mb-1">Латте</h3>
+                            <p class="text-sm text-neutral-400">Нежный кофейный напиток с молоком.</p>
+                        </div>
+                    </div>
+                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">300</span>
+                </div> 
+                -->
+            </div>
+        </section>
+
+        <!-- Classic drinks section -->
+        <section class="no-print">
+            <h2 class="text-xl md:text-2xl font-semibold tracking-wider uppercase text-center mb-6 no-print">К Л А С С И Ч Е С К И Е &nbsp; Н А П И Т К И</h2>
+            <div class="space-y-6">
+                <!-- Menu Item: Pepsi -->
+                <div class="flex flex-row justify-between items-center border-b border-neutral-700 pb-4">
+                    <div class="flex items-center gap-4">
+                        <img src="./optimized/pepsi.webp" alt="Pepsi" class="w-20 h-20 rounded-full object-cover hidden sm:block"/>
                         <div>
                             <h3 class="text-lg font-medium mb-1">Пепси ЖБ</h3>
                             <p class="text-sm text-neutral-400">Банка газировки пепси 0.33 л.</p>
@@ -48,33 +189,33 @@
                 </div>
 
                 <!-- Menu Item: Zelenokumskoe -->
-                <div class="flex flex-col sm:flex-row justify-between items-start border-b border-neutral-700 pb-4">
+                <div class="flex flex-row justify-between items-center border-b border-neutral-700 pb-4">
                     <div class="flex items-center gap-4">
-                        <img src="./optimized/zelenokumsk.webp" alt="Зеленокумский грушевый лимонад" class="w-20 h-20 rounded-full object-cover"/>
+                        <img src="./optimized/zelenokumsk.webp" alt="Зеленокумский грушевый лимонад" class="w-20 h-20 rounded-full object-cover hidden sm:block"/>
                         <div>
                             <h3 class="text-lg font-medium mb-1">Зеленокумский грушевый лимонад</h3>
                             <p class="text-sm text-neutral-400">Всеми любимый зеленокумский лимонад.</p>
                         </div>
                     </div>
-                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">100</span>
+                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">80</span>
                 </div>
 
                 <!-- Menu Item: Stom Peach -->
-                <div class="flex flex-col sm:flex-row justify-between items-start border-b border-neutral-700 pb-4">
+                <div class="flex flex-row justify-between items-center border-b border-neutral-700 pb-4">
                     <div class="flex items-center gap-4">
-                        <img src="./optimized/stom.webp" alt="Стом Персик" class="w-20 h-20 rounded-full object-cover"/>
+                        <img src="./optimized/stom.webp" alt="Стом Персик" class="w-20 h-20 rounded-full object-cover hidden sm:block"/>
                         <div>
                             <h3 class="text-lg font-medium mb-1">Стом Персик</h3>
                             <p class="text-sm text-neutral-400">Литровый персиковый лимонад Стом.</p>
                         </div>
                     </div>
-                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">100</span>
+                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">150</span>
                 </div>
                 
                 <!-- Menu Item: Go Champ -->
                 <!-- <div class="flex flex-col sm:flex-row justify-between items-start">
                     <div class="flex items-center gap-4">
-                        <img src="./optimized/stom.webp" alt="Go Champ" class="w-20 h-20 rounded-full object-cover"/>
+                        <img src="./optimized/stom.webp" alt="Go Champ" class="w-20 h-20 rounded-full object-cover hidden sm:block"/>
                         <div>
                             <h3 class="text-lg font-medium mb-1">Go Champ</h3>
                             <p class="text-sm text-neutral-400">Энергетический напиток.</p>
@@ -85,137 +226,6 @@
             </div>
         </section>
 
-        <!-- Hot Beverages section -->
-        <section class="mb-10">
-            <h2 class="text-xl md:text-2xl font-semibold tracking-wider uppercase text-center mb-6">Г О Р Я Ч И Е &nbsp; Н А П И Т К И</h2>
-            <div class="space-y-6">
-                <!-- Menu Item: Champagne Bubbles Tea -->
-                <div class="flex flex-col sm:flex-row justify-between items-start border-b border-neutral-700 pb-4">
-                    <div class="flex items-center gap-4">
-                        <img src="./optimized/tea.webp" alt="Чай Брызги шампанского" class="w-20 h-20 rounded-full object-cover"/>
-                        <div>
-                            <h3 class="text-lg font-medium mb-1">Чай Брызги шампанского</h3>
-                            <p class="text-sm text-neutral-400">Ароматный черный чай с нотками шампанского.</p>
-                        </div>
-                    </div>
-                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">200/350</span>
-                </div>
-
-                <!-- Menu Item: Wild Cherry Tea -->
-                <div class="flex flex-col sm:flex-row justify-between items-start border-b border-neutral-700 pb-4">
-                    <div class="flex items-center gap-4">
-                        <img src="./optimized/tea.webp" alt="Чай Дикая вишня" class="w-20 h-20 rounded-full object-cover"/>
-                        <div>
-                            <h3 class="text-lg font-medium mb-1">Чай Дикая вишня</h3>
-                            <p class="text-sm text-neutral-400">Фруктовый чай с ярким вкусом вишни.</p>
-                        </div>
-                    </div>
-                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">200/350</span>
-                </div>
-
-                <!-- Menu Item: Naughty Fruit Tea -->
-                <div class="flex flex-col sm:flex-row justify-between items-start border-b border-neutral-700 pb-4">
-                    <div class="flex items-center gap-4">
-                        <img src="./optimized/tea.webp" alt="Чай Наглый фрукт" class="w-20 h-20 rounded-full object-cover"/>
-                        <div>
-                            <h3 class="text-lg font-medium mb-1">Чай Наглый фрукт</h3>
-                            <p class="text-sm text-neutral-400">Экзотический фруктовый микс.</p>
-                        </div>
-                    </div>
-                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">200/350</span>
-                </div>
-                
-                <!-- Menu Item: Espresso -->
-                <div class="flex flex-col sm:flex-row justify-between items-start border-b border-neutral-700 pb-4">
-                    <div class="flex items-center gap-4">
-                        <img src="./optimized/coffee.webp" alt="Эспрессо" class="w-20 h-20 rounded-full object-cover"/>
-                        <div>
-                            <h3 class="text-lg font-medium mb-1">Эспрессо</h3>
-                            <p class="text-sm text-neutral-400">Крепкий и ароматный эспрессо.</p>
-                        </div>
-                    </div>
-                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">200</span>
-                </div>
-
-                <!-- Menu Item: Cappuccino -->
-                <div class="flex flex-col sm:flex-row justify-between items-start border-b border-neutral-700 pb-4">
-                    <div class="flex items-center gap-4">
-                        <img src="./optimized/coffee.webp" alt="Капучино" class="w-20 h-20 rounded-full object-cover">
-                        <div>
-                            <h3 class="text-lg font-medium mb-1">Капучино</h3>
-                            <p class="text-sm text-neutral-400">Классический кофе с молочной пенкой.</p>
-                        </div>
-                    </div>
-                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">300</span>
-                </div>
-
-                <!-- Menu Item: Latte -->
-                <div class="flex flex-col sm:flex-row justify-between items-start">
-                    <div class="flex items-center gap-4">
-                        <img src="./optimized/coffee.webp" alt="Латте" class="w-20 h-20 rounded-full object-cover">
-                        <div>
-                            <h3 class="text-lg font-medium mb-1">Латте</h3>
-                            <p class="text-sm text-neutral-400">Нежный кофейный напиток с молоком.</p>
-                        </div>
-                    </div>
-                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">300</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- Cocktails section -->
-        <section>
-            <h2 class="text-xl md:text-2xl font-semibold tracking-wider uppercase text-center mb-6">К О К Т Е Й Л И</h2>
-            <div class="space-y-6">
-                 <!-- Menu Item: Strawberry Mojito -->
-                <div class="flex flex-col sm:flex-row justify-between items-start border-b border-neutral-700 pb-4">
-                    <div class="flex items-center gap-4">
-                        <img src="./optimized/mohito_strawberry.webp" alt="Клубничный Мохито" class="w-20 h-20 rounded-full object-cover">
-                        <div>
-                            <h3 class="text-lg font-medium mb-1">Мохито клубничное</h3>
-                            <p class="text-sm text-neutral-400">Свежий мохито с ягодами клубники.</p>
-                        </div>
-                    </div>
-                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">200/350</span>
-                </div>
-
-                <!-- Menu Item: Classic Mojito -->
-                <div class="flex flex-col sm:flex-row justify-between items-start border-b border-neutral-700 pb-4">
-                    <div class="flex items-center gap-4">
-                        <img src="./optimized/mohito_classic.webp" alt="Классический Мохито" class="w-20 h-20 rounded-full object-cover">
-                        <div>
-                            <h3 class="text-lg font-medium mb-1">Мохито классическое</h3>
-                            <p class="text-sm text-neutral-400">Свежий мохито с нотками ароматной мяты.</p>
-                        </div>
-                    </div>
-                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">200/350</span>
-                </div>
-
-                <!-- Menu Item: Berry Lemonade -->
-                <div class="flex flex-col sm:flex-row justify-between items-start border-b border-neutral-700 pb-4">
-                    <div class="flex items-center gap-4">
-                        <img src="./optimized/fruit_drink.webp" alt="Ягодный Лимонад" class="w-20 h-20 rounded-full object-cover">
-                        <div>
-                            <h3 class="text-lg font-medium mb-1">Ягодный лимонад</h3>
-                            <p class="text-sm text-neutral-400">Свежие ягоды, мята и лимон.</p>
-                        </div>
-                    </div>
-                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">200/350</span>
-                </div>
-
-                <!-- Menu Item: Classic Lemonade -->
-                <div class="flex flex-col sm:flex-row justify-between items-start">
-                    <div class="flex items-center gap-4">
-                        <img src="./optimized/classic_drink.webp" alt="Классический Лимонад" class="w-20 h-20 rounded-full object-cover">
-                        <div>
-                            <h3 class="text-lg font-medium mb-1">Классический лимонад</h3>
-                            <p class="text-sm text-neutral-400">Классический лимонад с лимоном.</p>
-                        </div>
-                    </div>
-                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">200/350</span>
-                </div>
-            </div>
-        </section>
         <!-- Footer -->
         <footer class="mt-24 pt-8 w-1/2 self-center text-center border-t border-neutral-700 text-neutral-400 space-y-4">
             <!-- Location -->
