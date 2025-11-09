@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta name="viewport" content="width=820, initial-scale=0.5">
+    <title>GULLAM: Меню напитков</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for a modern, clean look -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="./common.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="/gullam/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/gullam/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/gullam/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/gullam/favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Gullam" />
+    <link rel="manifest" href="/gullam/favicon/site.webmanifest" />
+    <style>
+    /* Custom styles for aesthetic */
+    .pin-card {
+        transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        break-inside: avoid;
+        /* Helps keep the card intact in column-based masonry (though we are using grid here) */
+    }
+
+    .pin-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+    }
+
+    .placeholder-img {
+        object-fit: cover;
+        width: 100%;
+        display: block;
+    }
+
+    /* Simulating masonry grid effect with gap-4 on columns */
+    .masonry-grid {
+        column-count: 1;
+        column-gap: 1rem;
+    }
+
+    @media (min-width: 768px) {
+        .masonry-grid {
+            column-count: 2;
+        }
+    }
+    </style>
+</head>
+
+<body class="bg-neutral-900 text-neutral-100 min-h-screen p-4">
+    <!-- Main Content Container -->
+    <div class="w-full max-w-5xl mx-auto py-8">
+        <!-- Restaurant title -->
+        <header class="text-center mb-12 md:mb-16 flex flex-col">
+            <img src='./images/logotype_description_white.svg' alt="GULLAM Премиальный ресторан" class="flex self-center" />
+            <nav class="nav-container self-center no-print">
+                <a href="./index.html" class="nav-link">Основное</a>
+                <a href="#" class="nav-link nav-link--active">Напитки</a>
+            </nav>
+        </header>
+        <!-- Main Pin Grid Container -->
+        <div class="masonry-grid">
+            <!-- Helper function to generate a Pin Card for masonry layout -->
+            <script>
+            function createPinCard(title, description, price, image) {
+                return `
+                        <div class="pin-card bg-neutral-800 rounded-xl overflow-hidden shadow-lg mb-4">
+                            <!-- Image Placeholder (Pin Visual) -->
+                            <div class="aspect-auto">
+                                <img src="${image}" alt="${title}" class="placeholder-img rounded-t-xl" onerror="this.src='https://placehold.co/300x400/1f2937/d1d5db?text=DRINK'" />
+                            </div>
+                            
+                            <!-- Pin Details -->
+                            <div class="p-4">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h3 class="text-xl font-semibold text-neutral-50">${title}</h3>
+                                    <span class="text-lg font-bold text-red-400 whitespace-nowrap">${price} ₽</span>
+                                </div>
+                                <p class="text-sm text-neutral-400">${description}</p>
+                            </div>
+                        </div>
+                    `;
+            }
+            </script>
+            <!-- Menu Item Data Generation (Simulating pins with varied heights) -->
+            <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const gridContainer = document.querySelector('.masonry-grid');
+                let htmlContent = '';
+
+                // Add section titles as sticky/separate cards
+                const sections = [
+                    { 
+                        title: "ХОЛОДНЫЕ НАПИТКИ", 
+                        color: 'rgba(153, 27, 27, 0.2)',
+                        items: [
+                            { title: "Мохито клубничное", description: "Свежий мохито с ягодами клубники.", price: "200/350", image: './optimized/mohito_strawberry.webp' },
+                            { title: "Мохито классическое", description: "Свежий мохито с нотками ароматной мяты.", price: "200/350", image: './optimized/mohito_classic.webp' },
+                            { title: "Ягодный лимонад", description: "Свежие ягоды, мята и лимон.", price: "200/350", image: './optimized/fruit_drink.webp' },
+                            { title: "Классический лимонад", description: "Классический лимонад с лимоном.", price: "200/350", image: './optimized/classic_drink.webp' },
+                            ],
+                        },
+                    { 
+                        title: "ГОРЯЧИЕ НАПИТКИ", 
+                        color: 'rgba(63, 98, 18, 0.2)',
+                        items: [
+                            { title: "Чай Брызги шампанского", description: "Ароматный черный чай с нотками шампанского.", price: "200/350", image: './optimized/tea.webp' },
+                            { title: "Чай Дикая вишня", description: "Фруктовый чай с ярким вкусом вишни.", price: "200/350", image: './optimized/tea.webp' },
+                            { title: "Чай Наглый фрукт", description: "Экзотический фруктовый микс.", price: "200/350", image: './optimized/tea.webp' },
+                            { title: "Кофе 3 в 1", description: "Классика. Кофе 3 в 1.", price: "50", image: './optimized/coffee.webp' },
+                        ]
+                    },
+                    { 
+                        title: "КЛАССИЧЕСКИЕ НАПИТКИ", 
+                        color: 'rgba(30, 58, 138, 0.2)',
+                        items: [
+                            { title: "Пепси ЖБ", description: "Банка газировки пепси 0.33 л.", price: "80", image: './optimized/pepsi.webp' },
+                            { title: "Зеленокумский грушевый лимонад", description: "Всеми любимый зеленокумский лимонад.", price: "80", image: './optimized/zelenokumsk.webp' },
+                            { title: "Стом Персик", description: "Литровый персиковый лимонад Стом.", price: "150", image: './optimized/stom.webp' },
+                        ]
+                    }
+                ];
+
+                sections.forEach((section, index) => {
+                    // Insert a section header card (acts as a visual separator pin)
+                    htmlContent += `
+                            <div style="background-color:${section.color}" class="rounded-xl shadow-md mb-6 py-6 px-4 flex items-center justify-center text-center h-56">
+                                <h2 class="text-2xl font-bold tracking-wider uppercase text-neutral-50">${section.title}</h2>
+                            </div>
+                        `;
+
+                    // Insert items belonging to this section (approximated)
+
+                    section.items.forEach(item => {
+                        htmlContent += createPinCard(
+                            item.title,
+                            item.description,
+                            item.price,
+                            item.image
+                        );
+                    });
+                });
+
+                gridContainer.innerHTML = htmlContent;
+            });
+            </script>
+        </div>
+        <!-- Footer -->
+        <footer class="mt-24 pt-8 w-full md:w-1/2 mx-auto text-center border-t border-neutral-700 text-neutral-400 space-y-4">
+            <!-- Location -->
+            <div class="flex items-center justify-center space-x-2">
+                <svg fill="#a1a1a1" width="16px" height="16px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16,1A11,11,0,0,0,5,12C5,23.24,15,30.51,15.42,30.81a1,1,0,0,0,1.16,0C17,30.51,27,23.24,27,12A11,11,0,0,0,16,1Zm0,16a5,5,0,1,1,5-5A5,5,0,0,1,16,17Z"></path>
+                </svg>
+                <a href="https://yandex.com/maps/-/CLqjaTO5" target="_blank" rel="noopener noreferrer" class="text-sm hover:underline">C. Валерик, ул. Гайрбекова, д. 64</a>
+            </div>
+            <!-- Phone Number -->
+            <div class="flex items-center justify-center space-x-2">
+                <svg width="16px" height="16px" viewBox="0 0 24 24" fill="#a1a1a1" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2.00589 4.54166C1.905 3.11236 3.11531 2 4.54522 2H7.60606C8.34006 2 9.00207 2.44226 9.28438 3.1212L10.5643 6.19946C10.8761 6.94932 10.6548 7.81544 10.0218 8.32292L9.22394 8.96254C8.86788 9.24798 8.74683 9.74018 8.95794 10.1448C10.0429 12.2241 11.6464 13.9888 13.5964 15.2667C14.008 15.5364 14.5517 15.4291 14.8588 15.0445L15.6902 14.003C16.1966 13.3687 17.0609 13.147 17.8092 13.4594L20.8811 14.742C21.5587 15.0249 22 15.6883 22 16.4238V19.5C22 20.9329 20.8489 22.0955 19.4226 21.9941C10.3021 21.3452 2.65247 13.7017 2.00589 4.54166Z"></path>
+                </svg>
+                <a href="tel:+79388895574" class="text-sm hover:underline">+7 (938) 889-55-74</a>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>
