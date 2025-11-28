@@ -17,192 +17,406 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/gullam/favicon/apple-touch-icon.png" />
     <meta name="apple-mobile-web-app-title" content="Gullam" />
     <link rel="manifest" href="/gullam/favicon/site.webmanifest" />
-    <style>
-    /* Custom styles for aesthetic */
-    .pin-card {
-        transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-        break-inside: avoid;
-        /* Helps keep the card intact in column-based masonry (though we are using grid here) */
-    }
-
-    .pin-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
-    }
-
-    .placeholder-img {
-        object-fit: cover;
-        width: 100%;
-        display: block;
-    }
-
-    /* Simulating masonry grid effect with gap-4 on columns */
-    .masonry-grid {
-        column-count: 1;
-        column-gap: 1rem;
-    }
-
-    @media (min-width: 768px) {
-        .masonry-grid {
-            column-count: 2;
-        }
-    }
-    </style>
 </head>
 
-<body class="bg-neutral-900 text-neutral-100 min-h-screen p-4">
+<body class="bg-neutral-900 text-neutral-100 min-h-screen flex flex-col items-center justify-center p-4">
+    <!-- Restaurant title -->
+    <header class="text-center mx-auto px-4 py-8 md:py-16 flex flex-col">
+        <img src='./images/logotype_description_white.svg' alt="GULLAM Премиальный ресторан" class="flex self-center" />
+        <nav class="nav-container self-center no-print">
+            <a href="./index.html" class="nav-link nav-link--active">Основное</a>
+            <a href="#" class="nav-link">Напитки</a>
+        </nav>
+    </header>
     <!-- Main Content Container -->
-    <div class="w-full max-w-5xl mx-auto py-8">
-        <!-- Restaurant title -->
-        <header class="text-center mb-12 md:mb-16 flex flex-col">
-            <img src='./images/logotype_description_white.svg' alt="GULLAM Премиальный ресторан" class="flex self-center" />
-            <nav class="nav-container self-center no-print">
-                <a href="./index.html" class="nav-link">Основное</a>
-                <a href="#" class="nav-link nav-link--active">Напитки</a>
-            </nav>
-        </header>
-        <!-- Main Pin Grid Container -->
-        <div class="masonry-grid">
-            <!-- Helper function to generate a Pin Card for masonry layout -->
-            <script>
-            function createPinCard(title, description, price, image) {
-                return `
-                        <div class="pin-card bg-neutral-800 rounded-xl overflow-hidden shadow-lg mb-4">
-                            <!-- Image Placeholder (Pin Visual) -->
-                            <div class="aspect-auto">
-                                <img src="${image}" alt="${title}" class="placeholder-img rounded-t-xl" onerror="this.src='https://placehold.co/300x400/1f2937/d1d5db?text=DRINK'" />
-                            </div>
-                            
-                            <!-- Pin Details -->
-                            <div class="p-4">
-                                <div class="flex justify-between items-start mb-2">
-                                    <h3 class="text-xl font-semibold text-neutral-50">${title}</h3>
-                                    <span class="text-lg font-bold text-red-400 whitespace-nowrap">${price} ₽</span>
-                                </div>
+    <div class="w-full max-w-4xl flex flex-col align-center sections px-4">
+        <script>
+        function createSection(title, items) {
+            return `<section class="mb-10">
+                        <h2 class="text-xl md:text-2xl font-semibold tracking-wider uppercase text-center mb-6">${title}</h2>
+                        <div class="space-y-6 items">
+                            ${items}
+                        </div>
+                    </section>`;
+        }
+
+        function createItem({ image, title, description, price, printable, isLast }) {
+            return `<div class="flex flex-row justify-between items-center ${isLast ? '': 'border-b'} border-neutral-700 pb-4">
+                        <div class="flex items-center gap-4 ${printable ? '' : 'no-print'}">
+                            <img src="${image}" alt="${title}" class="w-20 h-20 rounded-full object-cover hidden sm:block" />
+                            <div>
+                                <h3 class="text-lg font-medium mb-1">${title}</h3>
                                 <p class="text-sm text-neutral-400">${description}</p>
                             </div>
                         </div>
-                    `;
-            }
-            </script>
-            <!-- Menu Item Data Generation (Simulating pins with varied heights) -->
-            <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                const gridContainer = document.querySelector('.masonry-grid');
-                let htmlContent = '';
+                        <span class="mt-2 sm:mt-0 sm:ml-4 text-lg font-bold text-red-400">${price}</span>
+                    </div>`;
+        }
 
-                // Add section titles as sticky/separate cards
-                const sections = [
-                    { 
-                        title: "БЛЮДА НА УГЛЯХ", 
-                        color: 'rgba(153, 27, 27, 0.2)',
-                        items: [
-                            { title: "Маринованная курица на углях", description: "Сочная курица на углях.", price: "900/1100", image: './optimized/chicken_grill.webp' },
-                            { title: "Сочный стейк из говядины", description: "Нежный говяжий стейк, обжаренный на углях.", price: "800/900", image: './optimized/steak_meat.webp' },
-                            { title: "Ароматный люля-кебаб", description: "Кебаб из отборного фарша на углях.", price: "500", image: './optimized/kebab.webp' },
-                            { title: "Сочные грибы шампиньоны", description: "Сочные грибы с дымком, маринованные в специях.", price: "300", image: './optimized/grilled_mushrooms.webp' },
-                            ],
+        document.addEventListener('DOMContentLoaded', () => {
+            const sectionsElement = document.querySelector('.sections');
+            let htmlContent = '';
+
+            // Add section titles as sticky/separate cards
+            const sections = [
+                {
+                    title: "БЛЮДА НА УГЛЯХ",
+                    items: [
+                        { 
+                            title: "Маринованная курица на углях", 
+                            description: "Сочная курица на углях.", 
+                            price: "900/1100", 
+                            image: './optimized/chicken_grill.webp',
+                            printable: true,
                         },
-                    { 
-                        title: "НАЦИОНАЛЬНЫЕ БЛЮДА", 
-                        color: 'rgba(63, 98, 18, 0.2)',
-                        items: [
-                            { title: "Манты 'По-Домашнему'", description: "Сочные манты с говяжьим фаршем и луком, приготовленные на пару.", price: "280", image: './optimized/manty.webp' },
-                            { title: "Галушки с говядиной", description: "Нежные галушки, подаются с крупными, ароматными кусками отварной говядины и бульоном.", price: "650", image: './optimized/galushki_s_govyadinoy.webp' },
-                            { title: "Галушки с курицей", description: "Аппетитные галушки, тушенные в нежном сливочном соусе с кусочками куриного мяса.", price: "550", image: './optimized/galushki_s_kuricey.webp' },
-                            { title: "ЧӀепалг", description: "Традиционный чеченский ЧӀепалг с творогом на кефирном тесте.", price: "150", image: './optimized/chepalg.webp' },
-                            { title: "Хингал", description: "Тонкая лепешка (Хинкал) с нежным сладким пюре из тыквы.", price: "150", image: './optimized/hinkal.webp' },
-                        ]
-                    },
-                    { 
-                        title: "ЕВРОПЕЙСКИЕ БЛЮДА И ЗАКУСКИ", 
-                        color: 'rgba(30, 58, 138, 0.2)',
-                        items: [
-                            // { title: "Сэндвич с копчёной индейкой", description: "Сочная индейка для легкого перекуса.", price: "230", image: './optimized/sanwich.webp' },
-                            { title: "Фетучини с курицей", description: "Классическая паста, курица и шампиньоны в бархатном сливочном соусе.", price: "400", image: './optimized/fetuchini.webp' },
-                            { title: "Рис 'Солнечный Гарнир'", description: "Яркий, ароматный рис с куркумой и добавлением сочной кукурузы.", price: "150", image: './optimized/rice.webp' },
-                            { title: "Крошка картошка'", description: "Нежная запеченная картошка с сыром.", price: "250", image: './optimized/potato.webp' },
-                            { title: "Картофель фри 'Начос''", description: "Хрустящий картофель фри, покрытый сырным соусом.", price: "280", image: './optimized/french_fries_with_cheese.webp' },
-                        ]
-                    },
-                    { 
-                        title: "САЛАТЫ", 
-                        color: 'rgba(30, 58, 138, 0.2)',
-                        items: [
-                            { title: "Салат цезарь с курицей'", description: "Свежий салат с курицей-гриль, сухариками и зеленью.", price: "290", image: './optimized/cezar.webp' },
-                            { title: "Летний салат'", description: "Легкий салат из свежих овощей и зелени.", price: "270", image: './optimized/summer_salad.webp' },
-                    },
-                    { 
-                        title: "ПИЦЦА", 
-                        color: 'rgba(30, 58, 138, 0.2)',
-                        items: [
-                            { title: "Пицца ассорти", description: "Мясное ассорти с говядиной и курицей.", price: "470", image: './optimized/pizza_assorti.webp' },
-                            { title: "Пицца с курицей и грибами", description: "Нежная курица и грибы под сырной корочкой.", price: "470", image: './optimized/pizza_chicken_with_mushrooms.webp' },
-                            { title: "Пицца мясная 'Мясной Пир'", description: "Сытная пицца с сочной говядиной.", price: "470", image: './optimized/pizza_beef_meat.webp' },
-                            { title: "Пицца сырная 'Маргарита'", description: "Сырная пицца с насыщенным вкусом.", price: "470", image: './optimized/pizza_cheese.webp' },
-                            { title: "Пицца грибная", description: "Сочные шампиньоны на тонком тесте.", price: "470", image: './optimized/pizza_mushroom.webp' },
-                            { title: "Пицца пепперони", description: "Классическая пицца с салями пепперони.", price: "470", image: './optimized/pizza_pepperoni.webp' },
-                            { title: "Пицца пепперони", description: "Классическая пицца с салями пепперони.", price: "470", image: './optimized/pizza_pepperoni.webp' },
-                    },
-                    { 
-                        title: "ФАСТ ФУД", 
-                        color: 'rgba(30, 58, 138, 0.2)',
-                        items: [
-                            { title: "Гиро на углях'", description: "Сочное мясо, картошка фри и фирменный соус.", price: "350", image: './optimized/giro.webp' },
-                            { title: "Кинкер'", description: "Вкусный и сочный кинкер со стрипсами.", price: "250", image: './optimized/kinker.webp' },
-                            { title: "Донер'", description: "Неповторимый вкус турецкого донара.", price: "200", image: './optimized/donar.webp' },
-                            { title: "Донер'", description: "Неповторимый вкус турецкого донара.", price: "200", image: './optimized/donar.webp' },
-                    },
-                    { 
-                        title: "САЛАТЫ", 
-                        color: 'rgba(30, 58, 138, 0.2)',
-                        items: [
-                            { title: "фффф'", description: "ффф", price: "100", image: './optimized/rice.webp' },
-                    }
-                ];
+                        { 
+                            title: "Сочный стейк из говядины", 
+                            description: "Нежный говяжий стейк, обжаренный на углях.", 
+                            price: "800/900", 
+                            image: './optimized/steak_meat.webp',
+                            printable: true,
+                        },
+                        { 
+                            title: "Ароматный люля-кебаб", 
+                            description: "Кебаб из отборного фарша на углях.", 
+                            price: "500", 
+                            image: './optimized/kebab.webp',
+                            printable: true,
+                        },
+                        { 
+                            title: "Сочные грибы шампиньоны", 
+                            description: "Сочные грибы с дымком, маринованные в специях.", 
+                            price: "300", 
+                            image: './optimized/grilled_mushrooms.webp',
+                            printable: true,
+                        },
+                    ],
+                },
+                {
+                    title: "НАЦИОНАЛЬНЫЕ БЛЮДА",
+                    items: [
+                        { 
+                            title: 'Манты "По-Домашнему"', 
+                            description: "Сочные манты с говяжьим фаршем и луком, приготовленные на пару.", 
+                            price: "280", 
+                            image: './optimized/manty.webp',
+                            printable: true,
+                        },
+                        { 
+                            title: "Галушки с говядиной", 
+                            description: "Нежные галушки, подаются с крупными, ароматными кусками отварной говядины и бульоном.", 
+                            price: "650", 
+                            image: './optimized/galushki_s_govyadinoy.webp',
+                            printable: true,
+                        },
+                        { 
+                            title: "Галушки с курицей", 
+                            description: "Аппетитные галушки, тушенные в нежном сливочном соусе с кусочками куриного мяса.", 
+                            price: "550", 
+                            image: './optimized/galushki_s_kuricey.webp',
+                            printable: true,
+                        },
+                        { 
+                            title: "ЧӀепалг", 
+                            description: "Традиционный чеченский ЧӀепалг с творогом на кефирном тесте.", 
+                            price: "150", 
+                            image: './optimized/chepalg.webp',
+                            printable: true,
+                        },
+                        { 
+                            title: "Хингал", 
+                            description: "Тонкая лепешка (Хинкал) с нежным сладким пюре из тыквы.", 
+                            price: "150", 
+                            image: './optimized/hinkal.webp',
+                            printable: true,
+                        },
+                    ],
+                },
+                {
+                    title: "ЕВРОПЕЙСКИЕ БЛЮДА И ЗАКУСКИ",
+                    items: [
+                        // { 
+                        //     title: "Сэндвич с копчёной индейкой", 
+                        //     description: "Сочная индейка для легкого перекуса.", 
+                        //     price: "230", 
+                        //     image: './optimized/sanwich.webp',
+                        //     printable: true,
+                        // },
+                        { 
+                            title: "Фетучини с курицей", 
+                            description: "Классическая паста, курица и шампиньоны в бархатном сливочном соусе.", 
+                            price: "400", 
+                            image: './optimized/fetuchini.webp',
+                            printable: true,
+                        },
+                        { 
+                            title: 'Рис "Солнечный Гарнир"', 
+                            description: "Яркий, ароматный рис с куркумой и добавлением сочной кукурузы.", 
+                            price: "150", 
+                            image: './optimized/rice.webp',
+                            printable: true,
+                        },
+                        { 
+                            title: "Крошка картошка", 
+                            description: "Нежная запеченная картошка с сыром.", 
+                            price: "250", 
+                            image: './optimized/potato.webp',
+                            printable: true,
+                        },
+                        { 
+                            title: 'Картофель фри "Начос"', 
+                            description: "Хрустящий картофель фри, покрытый сырным соусом.", 
+                            price: "280", 
+                            image: './optimized/french_fries_with_cheese.webp',
+                            printable: true,
+                        },
+                    ],
+                },
+                {
+                    title: "САЛАТЫ",
+                    items: [
+                        { 
+                            title: "Салат цезарь с курицей'", 
+                            description: "Свежий салат с курицей-гриль, сухариками и зеленью.", 
+                            price: "290", 
+                            image: './optimized/cezar.webp',
+                            printable: true,
+                        },
+                        { 
+                            title: "Летний салат'", 
+                            description: "Легкий салат из свежих овощей и зелени.", 
+                            price: "270", 
+                            image: './optimized/summer_salad.webp',
+                            printable: true,
+                        },
+                    ],
+                },
+                {
+                    title: "ПИЦЦА",
+                    items: [
+                        { 
+                            title: "Пицца ассорти", 
+                            description: "Мясное ассорти с говядиной и курицей.", 
+                            price: "470", 
+                            image: './optimized/pizza_assorti.webp',
+                            printable: true,
+                        },
+                        { 
+                            title: "Пицца с курицей и грибами", 
+                            description: "Нежная курица и грибы под сырной корочкой.", 
+                            price: "470", 
+                            image: './optimized/pizza_chicken_with_mushrooms.webp',
+                            printable: true,
+                        },
+                        { 
+                            title: 'Пицца мясная "Мясной Пир"', 
+                            description: "Сытная пицца с сочной говядиной.", 
+                            price: "470", 
+                            image: './optimized/pizza_beef_meat.webp',
+                            printable: true,
+                        },
+                        { 
+                            title: 'Пицца сырная "Маргарита"', 
+                            description: "Сырная пицца с насыщенным вкусом.", 
+                            price: "470", 
+                            image: './optimized/pizza_cheese.webp',
+                            printable: true,
+                        },
+                        { 
+                            title: "Пицца грибная", 
+                            description: "Сочные шампиньоны на тонком тесте.", 
+                            price: "470", 
+                            image: './optimized/pizza_mushroom.webp',
+                            printable: true,
+                        },
+                        { 
+                            title: "Пицца пепперони", 
+                            description: "Классическая пицца с салями пепперони.", 
+                            price: "470", 
+                            image: './optimized/pizza_pepperoni.webp',
+                            printable: true,
+                        },
+                    ],
+                },
+                {
+                    title: "ФАСТ ФУД",
+                    items: [
+                        { 
+                            title: "Гиро на углях'", 
+                            description: "Сочное мясо, картошка фри и фирменный соус.", 
+                            price: "350", 
+                            image: './optimized/giro.webp',
+                            printable: true,
+                        },
+                        { 
+                            title: "Кинкер", 
+                            description: "Вкусный и сочный кинкер со стрипсами.", 
+                            price: "250", 
+                            image: './optimized/kinker.webp',
+                            printable: true,
+                        },
+                        { 
+                            title: "Донер", 
+                            description: "Неповторимый вкус турецкого донара.", 
+                            price: "200", 
+                            image: './optimized/donar.webp',
+                            printable: true,
+                        },
+                        { 
+                            title: "Шаурма на углях", 
+                            description: "Курица на углях и свежие овощи.", 
+                            price: "200", 
+                            image: './optimized/shawerma.webp',
+                            printable: true,
+                        },
+                        { 
+                            title: "Бургер",
+                            description: "Сочная мясная котлета и сыр.", 
+                            price: "150/200", 
+                            image: './optimized/burger.webp',
+                            printable: true,
+                        },
+                        { 
+                            title: "Наггетсы",
+                            description: "Хрустящие куриные наггетсы в панировке.", 
+                            price: "150/250", 
+                            image: './optimized/nuggets.webp',
+                            printable: true,
+                        },
+                        { 
+                            title: "Крылышки",
+                            description: "Сочные куриные крылышки, обжаренные до золотистой корочки.", 
+                            price: "150/250", 
+                            image: './optimized/wings.webp',
+                            printable: true,
+                        },
+                        { 
+                            title: "Лаваш",
+                            description: "Хлеб всему голова :)", 
+                            price: "50", 
+                            image: './optimized/lawash.webp',
+                            printable: true,
+                        },
+                        { 
+                            title: "Картошка по-деревенски",
+                            description: "Крупные дольки картофеля по-деревенски.", 
+                            price: "150", 
+                            image: './optimized/po_derevenski.webp',
+                            printable: true,
+                        },
+                        { 
+                            title: "Картошка фри",
+                            description: "Традиционный картофель фри.", 
+                            price: "150", 
+                            image: './optimized/french_fries.webp',
+                            printable: true,
+                        },
+                    ],
+                },
+                {
+                    title: "СОУСЫ",
+                    items: [
+                        { 
+                            title: "Чесночный соус GULLAM", 
+                            description: "Фирменный чесночный соус.", 
+                            price: "50", 
+                            image: './optimized/garlic_souce.webp',
+                            printable: true,
+                        },
+                        { 
+                            title: "Томатный соус heinz", 
+                            description: "Классический томатный соус heinz.", 
+                            price: "50", 
+                            image: './optimized/tomato_souce.webp',
+                            printable: true,
+                        },
+                        { 
+                            title: "Сырный соус heinz", 
+                            description: "Классический сырный соус heinz.", 
+                            price: "50", 
+                            image: './optimized/cheese_souce.webp',
+                            printable: true,
+                        },
+                        { 
+                            title: "Чесночный соус heinz", 
+                            description: "Классический чесночный соус heinz.", 
+                            price: "50", 
+                            image: './optimized/garlic_souce_heinz.webp',
+                            printable: true,
+                        },
+                        { 
+                            title: "Барбекью соус heinz", 
+                            description: "Классический барбекью соус heinz.", 
+                            price: "50", 
+                            image: './optimized/barbecue_souce.webp',
+                            printable: true,
+                        },
+                    ],
+                },
+                {
+                    title: "ДОПОЛЬНИТЕЛЬНО",
+                    items: [
+                        { 
+                            title: "Перчатки", 
+                            description: "Одноразовые перчатки для вашего удобства.", 
+                            price: "10", 
+                            image: './optimized/gloves.webp',
+                            printable: true,
+                        },
+                        { 
+                            title: "Влажная салфетка", 
+                            description: "Освежающая влажная салфетка.", 
+                            price: "10", 
+                            image: './optimized/wipes.webp',
+                            printable: true,
+                        },
+                        { 
+                            title: "Пластиковая вилка", 
+                            description: "Одноразовая пластиковая вилка.", 
+                            price: "10", 
+                            image: './optimized/fork.webp',
+                            printable: false,
+                        },
+                        { 
+                            title: "Пластиковый нож", 
+                            description: "Одноразовый пластиковый нож.", 
+                            price: "10", 
+                            image: './optimized/knife.webp',
+                            printable: false,
+                        },
+                    ],
+                }
+            ];
 
-                sections.forEach((section, index) => {
-                    // Insert a section header card (acts as a visual separator pin)
-                    htmlContent += `
-                            <div style="background-color:${section.color}" class="rounded-xl shadow-md mb-6 py-6 px-4 flex items-center justify-center text-center h-56">
-                                <h2 class="text-2xl font-bold tracking-wider uppercase text-neutral-50">${section.title}</h2>
-                            </div>
-                        `;
+            sections.forEach((section, index) => {
+                const title = section.title.split('').join(' ').replace(/\s/g, '&nbsp;')
 
-                    // Insert items belonging to this section (approximated)
+                const items = section.items.map((item, index) => createItem({...item, isLast: section.items.length-1 === index}));
 
-                    section.items.forEach(item => {
-                        htmlContent += createPinCard(
-                            item.title,
-                            item.description,
-                            item.price,
-                            item.image
-                        );
-                    });
-                });
-
-                gridContainer.innerHTML = htmlContent;
+                htmlContent += createSection(title, items.join(''));
             });
-            </script>
-        </div>
-        <!-- Footer -->
-        <footer class="mt-24 pt-8 w-full md:w-1/2 mx-auto text-center border-t border-neutral-700 text-neutral-400 space-y-4">
-            <!-- Location -->
-            <div class="flex items-center justify-center space-x-2">
-                <svg fill="#a1a1a1" width="16px" height="16px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M16,1A11,11,0,0,0,5,12C5,23.24,15,30.51,15.42,30.81a1,1,0,0,0,1.16,0C17,30.51,27,23.24,27,12A11,11,0,0,0,16,1Zm0,16a5,5,0,1,1,5-5A5,5,0,0,1,16,17Z"></path>
-                </svg>
-                <a href="https://yandex.com/maps/-/CLqjaTO5" target="_blank" rel="noopener noreferrer" class="text-sm hover:underline">C. Валерик, ул. Гайрбекова, д. 64</a>
-            </div>
-            <!-- Phone Number -->
-            <div class="flex items-center justify-center space-x-2">
-                <svg width="16px" height="16px" viewBox="0 0 24 24" fill="#a1a1a1" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M2.00589 4.54166C1.905 3.11236 3.11531 2 4.54522 2H7.60606C8.34006 2 9.00207 2.44226 9.28438 3.1212L10.5643 6.19946C10.8761 6.94932 10.6548 7.81544 10.0218 8.32292L9.22394 8.96254C8.86788 9.24798 8.74683 9.74018 8.95794 10.1448C10.0429 12.2241 11.6464 13.9888 13.5964 15.2667C14.008 15.5364 14.5517 15.4291 14.8588 15.0445L15.6902 14.003C16.1966 13.3687 17.0609 13.147 17.8092 13.4594L20.8811 14.742C21.5587 15.0249 22 15.6883 22 16.4238V19.5C22 20.9329 20.8489 22.0955 19.4226 21.9941C10.3021 21.3452 2.65247 13.7017 2.00589 4.54166Z"></path>
-                </svg>
-                <a href="tel:+79388895574" class="text-sm hover:underline">+7 (938) 889-55-74</a>
-            </div>
-        </footer>
+
+            sectionsElement.innerHTML = htmlContent;
+        });
+        </script>
     </div>
+    <!-- Footer -->
+    <footer class="text-2xl my-24 pt-8 w-full md:w-1/4 mx-auto text-center border-t border-neutral-700 text-neutral-400 space-y-4">
+        <!-- Location -->
+        <div class="flex items-center justify-center space-x-2">
+            <svg fill="#a1a1a1" width="16px" height="16px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16,1A11,11,0,0,0,5,12C5,23.24,15,30.51,15.42,30.81a1,1,0,0,0,1.16,0C17,30.51,27,23.24,27,12A11,11,0,0,0,16,1Zm0,16a5,5,0,1,1,5-5A5,5,0,0,1,16,17Z"></path>
+            </svg>
+            <a href="https://yandex.com/maps/-/CLqjaTO5" target="_blank" rel="noopener noreferrer" class="text-lg hover:underline">C. Валерик, ул. Гайрбекова, д. 64</a>
+        </div>
+        <!-- Phone Number -->
+        <div class="flex items-center justify-center space-x-2">
+            <svg width="16px" height="16px" viewBox="0 0 24 24" fill="#a1a1a1" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2.00589 4.54166C1.905 3.11236 3.11531 2 4.54522 2H7.60606C8.34006 2 9.00207 2.44226 9.28438 3.1212L10.5643 6.19946C10.8761 6.94932 10.6548 7.81544 10.0218 8.32292L9.22394 8.96254C8.86788 9.24798 8.74683 9.74018 8.95794 10.1448C10.0429 12.2241 11.6464 13.9888 13.5964 15.2667C14.008 15.5364 14.5517 15.4291 14.8588 15.0445L15.6902 14.003C16.1966 13.3687 17.0609 13.147 17.8092 13.4594L20.8811 14.742C21.5587 15.0249 22 15.6883 22 16.4238V19.5C22 20.9329 20.8489 22.0955 19.4226 21.9941C10.3021 21.3452 2.65247 13.7017 2.00589 4.54166Z"></path>
+            </svg>
+            <a href="tel:+79388895574" class="text-lg hover:underline">+7 (938) 889-55-74</a>
+        </div>
+    </footer>
 </body>
 
 </html>

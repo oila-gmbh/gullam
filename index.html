@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <meta name="viewport" content="width=820, initial-scale=0.5">
-    <title>GULLAM</title>
+    <title>GULLAM: Меню напитков</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts for a modern, clean look -->
@@ -19,545 +19,404 @@
     <link rel="manifest" href="/gullam/favicon/site.webmanifest" />
 </head>
 
-<body class="bg-neutral-900 text-neutral-100 min-h-screen flex items-center justify-center p-4">
-    <!-- Main menu container with responsive padding and max-width -->
-    <div class="w-full max-w-4xl mx-auto px-4 py-8 md:py-16 flex flex-col align-center">
-        <!-- Restaurant title -->
-        <header class="text-center mb-12 md:mb-16 flex flex-col">
-            <img src='./images/logotype_description_white.svg' alt="GULLAM Премиальный ресторан" class="flex self-center" />
-            <nav class="nav-container self-center no-print">
-                <a href="#" class="nav-link nav-link--active">Основное</a>
-                <a href="./drinks.html" class="nav-link">Напитки</a>
-            </nav>
-        </header>
-        <!-- Charcoal Dishes section -->
-        <section class="mb-10">
-            <h2 class="text-xl md:text-2xl font-semibold tracking-wider uppercase text-center mb-6">Б Л Ю Д А &nbsp; Н А &nbsp; У Г Л Я Х</h2>
-            <div class="space-y-6">
-                <!-- Menu Item: Charcoal Chicken -->
-                <div class="flex flex-row justify-between items-center border-b border-neutral-700 pb-4">
-                    <div class="flex items-center gap-4">
-                        <img src="./optimized/chicken_grill.webp" alt="Маринованная курица на углях" class="w-20 h-20 rounded-full object-cover hidden sm:block" />
-                        <div>
-                            <h3 class="text-lg font-medium mb-1">Маринованная курица на углях</h3>
-                            <p class="text-sm text-neutral-400">Сочная курица на углях.</p>
+<body class="bg-neutral-900 text-neutral-100 min-h-screen flex flex-col items-center justify-center p-4">
+    <!-- Restaurant title -->
+    <header class="text-center mx-auto px-4 py-8 md:py-16 flex flex-col">
+        <img src='./images/logotype_description_white.svg' alt="GULLAM Премиальный ресторан" class="flex self-center" />
+        <nav class="nav-container self-center no-print">
+            <a href="./index.html" class="nav-link nav-link--active">Основное</a>
+            <a href="#" class="nav-link">Напитки</a>
+        </nav>
+    </header>
+    <!-- Main Content Container -->
+    <div class="w-full max-w-4xl flex flex-col align-center sections px-4">
+        <script>
+        function createSection(title, items) {
+            return `<section class="mb-10">
+                        <h2 class="text-xl md:text-2xl font-semibold tracking-wider uppercase text-center mb-6">${title}</h2>
+                        <div class="space-y-6 items">
+                            ${items}
                         </div>
-                    </div>
-                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">900/1100</span>
-                </div>
-                <!-- Menu Item: Charcoal Steak -->
-                <div class="flex flex-row justify-between items-center border-b border-neutral-700 pb-4">
-                    <div class="flex items-center gap-4">
-                        <img src="./optimized/steak_meat.webp" alt="Сочный стейк из говядины" class="w-20 h-20 rounded-full object-cover hidden sm:block">
-                        <div>
-                            <h3 class="text-lg font-medium mb-1">Сочный стейк из говядины</h3>
-                            <p class="text-sm text-neutral-400">Нежный говяжий стейк, обжаренный на углях.</p>
+                    </section>`;
+        }
+
+        function createItem({ image, title, description, price, printable, isLast }) {
+            return `<div class="flex flex-row justify-between items-center ${isLast ? '': 'border-b'} border-neutral-700 pb-4">
+                        <div class="flex items-center gap-4 ${printable ? '' : 'no-print'}">
+                            <img src="${image}" alt="${title}" class="w-20 h-20 rounded-full object-cover hidden sm:block" />
+                            <div>
+                                <h3 class="text-lg font-medium mb-1">${title}</h3>
+                                <p class="text-sm text-neutral-400">${description}</p>
+                            </div>
                         </div>
-                    </div>
-                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">800/900</span>
-                </div>
-                <!-- Menu Item: Lyulya Kebab -->
-                <div class="flex flex-row justify-between items-center border-b border-neutral-700 pb-4">
-                    <div class="flex items-center gap-4">
-                        <img src="./optimized/kebab.webp" alt="Ароматный люля-кебаб" class="w-20 h-20 rounded-full object-cover hidden sm:block">
-                        <div>
-                            <h3 class="text-lg font-medium mb-1">Ароматный люля-кебаб</h3>
-                            <p class="text-sm text-neutral-400">Кебаб из отборного фарша на углях.</p>
-                        </div>
-                    </div>
-                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">500</span>
-                </div>
-                <!-- Menu Item: Grilled mushrooms -->
-                <div class="flex flex-row justify-between items-center border-b border-neutral-700 pb-4">
-                    <div class="flex items-center gap-4">
-                        <img src="./optimized/grilled_mushrooms.webp" alt="Сочные грибы шампиньоны" class="w-20 h-20 rounded-full object-cover hidden sm:block">
-                        <div>
-                            <h3 class="text-lg font-medium mb-1">Сочные грибы шампиньоны</h3>
-                            <p class="text-sm text-neutral-400">Сочные грибы с дымком, маринованные в специях.</p>
-                        </div>
-                    </div>
-                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">300</span>
-                </div>
-            </div>
-        </section>
-        <!-- National food -->
-        <section class="mb-10">
-            <h2 class="text-xl md:text-2xl font-semibold tracking-wider uppercase text-center mb-6">Н А Ц И О Н А Л Ь Н Ы Е &nbsp; Б Л Ю Д А</h2>
-            <div class="space-y-6">
-                <!-- Menu Item: Manty -->
-                <div class="flex flex-row justify-between items-center border-b border-neutral-700 pb-4">
-                    <div class="flex items-center gap-4">
-                        <img src="./optimized/manty.webp" alt="Манты 'По-Домашнему'" class="w-20 h-20 rounded-full object-cover hidden sm:block">
-                        <div>
-                            <h3 class="text-lg font-medium mb-1">Манты "По-Домашнему"</h3>
-                            <p class="text-sm text-neutral-400">Сочные манты с говяжьим фаршем и луком, приготовленные на пару.</p>
-                        </div>
-                    </div>
-                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">280</span>
-                </div>
-                <!-- Menu Item: Galushki s govyadinoy -->
-                <div class="flex flex-row justify-between items-center border-b border-neutral-700 pb-4">
-                    <div class="flex items-center gap-4">
-                        <img src="./optimized/galushki_s_govyadinoy.webp" alt="Галушки с говядиной" class="w-20 h-20 rounded-full object-cover hidden sm:block">
-                        <div>
-                            <h3 class="text-lg font-medium mb-1">Галушки с говядиной</h3>
-                            <p class="text-sm text-neutral-400">Нежные галушки, подаются с крупными, ароматными кусками отварной говядины и бульоном.</p>
-                        </div>
-                    </div>
-                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">650</span>
-                </div>
-                <!-- Menu Item: Galushki s kuricey -->
-                <div class="flex flex-row justify-between items-center border-b border-neutral-700 pb-4">
-                    <div class="flex items-center gap-4">
-                        <img src="./optimized/galushki_s_kuricey.webp" alt="Галушки с курицей" class="w-20 h-20 rounded-full object-cover hidden sm:block">
-                        <div>
-                            <h3 class="text-lg font-medium mb-1">Галушки с курицей</h3>
-                            <p class="text-sm text-neutral-400">Аппетитные галушки, тушенные в нежном сливочном соусе с кусочками куриного мяса.</p>
-                        </div>
-                    </div>
-                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">550</span>
-                </div>
-                <!-- Menu Item: ЧӀепалг -->
-                <div class="flex flex-row justify-between items-center border-b border-neutral-700 pb-4">
-                    <div class="flex items-center gap-4">
-                        <img src="./optimized/chepalg.webp" alt="ЧӀепалг" class="w-20 h-20 rounded-full object-cover hidden sm:block">
-                        <div>
-                            <h3 class="text-lg font-medium mb-1">ЧӀепалг</h3>
-                            <p class="text-sm text-neutral-400">Традиционный чеченский ЧӀепалг с творогом на кефирном тесте.</p>
-                        </div>
-                    </div>
-                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">150</span>
-                </div>
-                <!-- Menu Item: Хингал -->
-                <div class="flex flex-row justify-between items-center border-b border-neutral-700 pb-4">
-                    <div class="flex items-center gap-4">
-                        <img src="./optimized/hinkal.webp" alt="ЧӀепалг" class="w-20 h-20 rounded-full object-cover hidden sm:block">
-                        <div>
-                            <h3 class="text-lg font-medium mb-1">Хингал</h3>
-                            <p class="text-sm text-neutral-400">Тонкая лепешка (Хинкал) с нежным сладким пюре из тыквы.</p>
-                        </div>
-                    </div>
-                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">150</span>
-                </div>
-            </div>
-        </section>
-        <!-- Hearty Snacks section -->
-        <section class="mb-10">
-            <h2 class="text-xl md:text-2xl font-semibold tracking-wider uppercase text-center mb-6">Е В Р О П Е Й С К И Е &nbsp; Б Л Ю Д А &nbsp; И &nbsp; З А К У С К И</h2>
-            <div class="space-y-6">
-                <!-- Menu Item: Smoked Turkey Sandwich -->
-                <!-- <div class="flex flex-row justify-between items-center border-b border-neutral-700 pb-4">
-                    <div class="flex items-center gap-4">
-                        <img src="./optimized/sanwich.webp" alt="Сэндвич с копчёной индейкой" class="w-20 h-20 rounded-full object-cover hidden sm:block">
-                        <div>
-                            <h3 class="text-lg font-medium mb-1">Сэндвич с копчёной индейкой</h3>
-                            <p class="text-sm text-neutral-400">Сочная индейка для легкого перекуса.</p>
-                        </div>
-                    </div>
-                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">230</span>
-                </div> -->
-                <!-- Menu Item: Фетучини с курицей -->
-                <div class="flex flex-row justify-between items-center border-b border-neutral-700 pb-4">
-                    <div class="flex items-center gap-4">
-                        <img src="./optimized/fetuchini.webp" alt="Фетучини с курицей" class="w-20 h-20 rounded-full object-cover hidden sm:block">
-                        <div>
-                            <h3 class="text-lg font-medium mb-1">Фетучини с курицей</h3>
-                            <p class="text-sm text-neutral-400">Классическая паста, курица и шампиньоны в бархатном сливочном соусе.</p>
-                        </div>
-                    </div>
-                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">400</span>
-                </div>
-                <!-- Menu Item: Рис -->
-                <div class="flex flex-row justify-between items-center border-b border-neutral-700 pb-4">
-                    <div class="flex items-center gap-4">
-                        <img src="./optimized/rice.webp" alt="Рис 'Солнечный Гарнир'" class="w-20 h-20 rounded-full object-cover hidden sm:block">
-                        <div>
-                            <h3 class="text-lg font-medium mb-1">Рис "Солнечный Гарнир"</h3>
-                            <p class="text-sm text-neutral-400">Яркий, ароматный рис с куркумой и добавлением сочной кукурузы.</p>
-                        </div>
-                    </div>
-                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">150</span>
-                </div>
-                <!-- Menu Item: Baked Potato with Cheese and Butter -->
-                <div class="flex flex-row justify-between items-center border-b border-neutral-700 pb-4">
-                    <div class="flex items-center gap-4">
-                        <img src="./optimized/potato.webp" alt="Крошка картошка" class="w-20 h-20 rounded-full object-cover hidden sm:block">
-                        <div>
-                            <h3 class="text-lg font-medium mb-1">Крошка картошка</h3>
-                            <p class="text-sm text-neutral-400">Нежная запеченная картошка с сыром.</p>
-                        </div>
-                    </div>
-                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">250</span>
-                </div>
-                <!-- Menu Item: Nacho Fries -->
-                <div class="flex flex-row justify-between items-center border-b border-neutral-700 pb-4">
-                    <div class="flex items-center gap-4">
-                        <img src="./optimized/french_fries_with_cheese.webp" alt="Картофель фри 'Начос'" class="w-20 h-20 rounded-full object-cover hidden sm:block">
-                        <div>
-                            <h3 class="text-lg font-medium mb-1">Картофель фри "Начос"</h3>
-                            <p class="text-sm text-neutral-400">Хрустящий картофель фри, покрытый сырным соусом.</p>
-                        </div>
-                    </div>
-                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">280</span>
-                </div>
-            </div>
-        </section>
-        <!-- Salads section -->
-        <section class="mb-10">
-            <h2 class="text-xl md:text-2xl font-semibold tracking-wider uppercase text-center mb-6">С А Л А Т Ы</h2>
-            <div class="space-y-6">
-                <!-- Menu Item: Caesar Salad -->
-                <div class="flex flex-row justify-between items-center border-b border-neutral-700 pb-4">
-                    <div class="flex items-center gap-4">
-                        <img src="./optimized/cezar.webp" alt="Салат цезарь с курицей" class="w-20 h-20 rounded-full object-cover hidden sm:block">
-                        <div>
-                            <h3 class="text-lg font-medium mb-1">Салат цезарь с курицей</h3>
-                            <p class="text-sm text-neutral-400">Свежий салат с курицей-гриль, сухариками и зеленью.</p>
-                        </div>
-                    </div>
-                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">290</span>
-                </div>
-                <!-- Menu Item: Summer Salad -->
-                <div class="flex flex-row justify-between items-center border-b border-neutral-700 pb-4">
-                    <div class="flex items-center gap-4">
-                        <img src="./optimized/summer_salad.webp" alt="Летний салат" class="w-20 h-20 rounded-full object-cover hidden sm:block">
-                        <div>
-                            <h3 class="text-lg font-medium mb-1">Летний салат</h3>
-                            <p class="text-sm text-neutral-400">Легкий салат из свежих овощей и зелени.</p>
-                        </div>
-                    </div>
-                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">270</span>
-                </div>
-            </div>
-        </section>
-        <!-- Pizza section -->
-        <section class="mb-10">
-            <h2 class="text-xl md:text-2xl font-semibold tracking-wider uppercase text-center mb-6">П И Ц Ц А</h2>
-            <div class="space-y-6">
-                <!-- Menu Item: Assorted Pizza -->
-                <div class="flex flex-row justify-between items-center border-b border-neutral-700 pb-4">
-                    <div class="flex items-center gap-4">
-                        <img src="./optimized/pizza_assorti.webp" alt="Пицца ассорти" class="w-20 h-20 rounded-full object-cover hidden sm:block">
-                        <div>
-                            <h3 class="text-lg font-medium mb-1">Пицца ассорти</h3>
-                            <p class="text-sm text-neutral-400">Мясное ассорти с говядиной и курицей.</p>
-                        </div>
-                    </div>
-                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">470</span>
-                </div>
-                <!-- Menu Item: Chicken Pizza -->
-                <div class="flex flex-row justify-between items-center border-b border-neutral-700 pb-4">
-                    <div class="flex items-center gap-4">
-                        <img src="./optimized/pizza_chicken_with_mushrooms.webp" alt="Пицца с курицей и грибами" class="w-20 h-20 rounded-full object-cover hidden sm:block">
-                        <div>
-                            <h3 class="text-lg font-medium mb-1">Пицца с курицей и грибами</h3>
-                            <p class="text-sm text-neutral-400">Нежная курица и грибы под сырной корочкой.</p>
-                        </div>
-                    </div>
-                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">470</span>
-                </div>
-                <!-- Menu Item: Meat Pizza -->
-                <div class="flex flex-row justify-between items-center border-b border-neutral-700 pb-4">
-                    <div class="flex items-center gap-4">
-                        <img src="./optimized/pizza_beef_meat.webp" alt="Пицца мясная 'Мясной Пир'" class="w-20 h-20 rounded-full object-cover hidden sm:block">
-                        <div>
-                            <h3 class="text-lg font-medium mb-1">Пицца мясная "Мясной Пир"</h3>
-                            <p class="text-sm text-neutral-400">Сытная пицца с сочной говядиной.</p>
-                        </div>
-                    </div>
-                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">470</span>
-                </div>
-                <!-- Menu Item: Cheese Pizza -->
-                <div class="flex flex-row justify-between items-center border-b border-neutral-700 pb-4">
-                    <div class="flex items-center gap-4">
-                        <img src="./optimized/pizza_cheese.webp" alt="Пицца сырная 'Маргарита'" class="w-20 h-20 rounded-full object-cover hidden sm:block">
-                        <div>
-                            <h3 class="text-lg font-medium mb-1">Пицца сырная "Маргарита"</h3>
-                            <p class="text-sm text-neutral-400">Сырная пицца с насыщенным вкусом.</p>
-                        </div>
-                    </div>
-                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">470</span>
-                </div>
-                <!-- Menu Item: Mushroom Pizza -->
-                <div class="flex flex-row justify-between items-center border-b border-neutral-700 pb-4">
-                    <div class="flex items-center gap-4">
-                        <img src="./optimized/pizza_mushroom.webp" alt="Пицца грибная" class="w-20 h-20 rounded-full object-cover hidden sm:block">
-                        <div>
-                            <h3 class="text-lg font-medium mb-1">Пицца грибная</h3>
-                            <p class="text-sm text-neutral-400">Сочные шампиньоны на тонком тесте.</p>
-                        </div>
-                    </div>
-                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">470</span>
-                </div>
-                <!-- Menu Item: Pepperoni Pizza -->
-                <div class="flex flex-row justify-between items-center border-b border-neutral-700 pb-4">
-                    <div class="flex items-center gap-4">
-                        <img src="./optimized/pizza_pepperoni.webp" alt="Пицца пепперони" class="w-20 h-20 rounded-full object-cover hidden sm:block">
-                        <div>
-                            <h3 class="text-lg font-medium mb-1">Пицца пепперони</h3>
-                            <p class="text-sm text-neutral-400">Классическая пицца с салями пепперони.</p>
-                        </div>
-                    </div>
-                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">470</span>
-                </div>
-            </div>
-        </section>
-        <!-- Fast Food section -->
-        <section class="mb-10">
-            <h2 class="text-xl md:text-2xl font-semibold tracking-wider uppercase text-center mb-6">Ф А С Т &nbsp; Ф У Д</h2>
-            <div class="space-y-6">
-                <!-- Menu Item: Charcoal Gyro -->
-                <div class="flex flex-row justify-between items-center border-b border-neutral-700 pb-4">
-                    <div class="flex items-center gap-4">
-                        <img src="./optimized/giro.webp" alt="Гиро на углях" class="w-20 h-20 rounded-full object-cover hidden sm:block">
-                        <div>
-                            <h3 class="text-lg font-medium mb-1">Гиро на углях</h3>
-                            <p class="text-sm text-neutral-400">Сочное мясо, картошка фри и фирменный соус.</p>
-                        </div>
-                    </div>
-                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">350</span>
-                </div>
-                <!-- Menu Item: Kinker -->
-                <div class="flex flex-row justify-between items-center border-b border-neutral-700 pb-4">
-                    <div class="flex items-center gap-4">
-                        <img src="./optimized/kinker.webp" alt="Кинкер" class="w-20 h-20 rounded-full object-cover hidden sm:block">
-                        <div>
-                            <h3 class="text-lg font-medium mb-1">Кинкер</h3>
-                            <p class="text-sm text-neutral-400">Вкусный и сочный кинкер со стрипсами.</p>
-                        </div>
-                    </div>
-                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">250</span>
-                </div>
-                <!-- Menu Item: Doner -->
-                <div class="flex flex-row justify-between items-center border-b border-neutral-700 pb-4">
-                    <div class="flex items-center gap-4">
-                        <img src="./optimized/donar.webp" alt="Донер" class="w-20 h-20 rounded-full object-cover hidden sm:block">
-                        <div>
-                            <h3 class="text-lg font-medium mb-1">Донер</h3>
-                            <p class="text-sm text-neutral-400">Неповторимый вкус турецкого донара.</p>
-                        </div>
-                    </div>
-                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">200</span>
-                </div>
-                <!-- Menu Item: Charcoal Shawarma -->
-                <div class="flex flex-row justify-between items-center border-b border-neutral-700 pb-4">
-                    <div class="flex items-center gap-4">
-                        <img src="./optimized/shawerma.webp" alt="Шаурма на углях" class="w-20 h-20 rounded-full object-cover hidden sm:block">
-                        <div>
-                            <h3 class="text-lg font-medium mb-1">Шаурма на углях</h3>
-                            <p class="text-sm text-neutral-400">Курица на углях и свежие овощи.</p>
-                        </div>
-                    </div>
-                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">200</span>
-                </div>
-                <!-- Menu Item: Burger -->
-                <div class="flex flex-row justify-between items-center border-b border-neutral-700 pb-4">
-                    <div class="flex items-center gap-4">
-                        <img src="./optimized/burger.webp" alt="Бургер" class="w-20 h-20 rounded-full object-cover hidden sm:block">
-                        <div>
-                            <h3 class="text-lg font-medium mb-1">Бургер</h3>
-                            <p class="text-sm text-neutral-400">Сочная мясная котлета и сыр.</p>
-                        </div>
-                    </div>
-                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">150/200</span>
-                </div>
-                <!-- Menu Item: Nuggets -->
-                <div class="flex flex-row justify-between items-center border-b border-neutral-700 pb-4">
-                    <div class="flex items-center gap-4">
-                        <img src="./optimized/nuggets.webp" alt="Наггетсы" class="w-20 h-20 rounded-full object-cover hidden sm:block">
-                        <div>
-                            <h3 class="text-lg font-medium mb-1">Наггетсы</h3>
-                            <p class="text-sm text-neutral-400">Хрустящие куриные наггетсы в панировке.</p>
-                        </div>
-                    </div>
-                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">150/250</span>
-                </div>
-                <!-- Menu Item: Wings -->
-                <div class="flex flex-row justify-between items-center border-b border-neutral-700 pb-4">
-                    <div class="flex items-center gap-4">
-                        <img src="./optimized/wings.webp" alt="Крылышки" class="w-20 h-20 rounded-full object-cover hidden sm:block">
-                        <div>
-                            <h3 class="text-lg font-medium mb-1">Крылышки</h3>
-                            <p class="text-sm text-neutral-400">Сочные куриные крылышки, обжаренные до золотистой корочки.</p>
-                        </div>
-                    </div>
-                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">150/250</span>
-                </div>
-                <!-- Menu Item: Bread -->
-                <div class="flex flex-row justify-between items-center border-b border-neutral-700 pb-4">
-                    <div class="flex items-center gap-4">
-                        <img src="./optimized/lawash.webp" alt="Лаваш" class="w-20 h-20 rounded-full object-cover hidden sm:block">
-                        <div>
-                            <h3 class="text-lg font-medium mb-1">Лаваш</h3>
-                            <p class="text-sm text-neutral-400">Хлеб всему голова :)</p>
-                        </div>
-                    </div>
-                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">50</span>
-                </div>
-                <!-- Menu Item: Country Style Potatoes -->
-                <div class="flex flex-row justify-between items-center border-b border-neutral-700 pb-4">
-                    <div class="flex items-center gap-4">
-                        <img src="./optimized/po_derevenski.webp" alt="По-деревенски" class="w-20 h-20 rounded-full object-cover hidden sm:block">
-                        <div>
-                            <h3 class="text-lg font-medium mb-1">По-деревенски</h3>
-                            <p class="text-sm text-neutral-400">Крупные дольки картофеля по-деревенски.</p>
-                        </div>
-                    </div>
-                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">150</span>
-                </div>
-                <!-- Menu Item: French Fries -->
-                <div class="flex flex-row justify-between items-center border-b border-neutral-700 pb-4">
-                    <div class="flex items-center gap-4">
-                        <img src="./optimized/french_fries.webp" alt="Фри" class="w-20 h-20 rounded-full object-cover hidden sm:block">
-                        <div>
-                            <h3 class="text-lg font-medium mb-1">Фри</h3>
-                            <p class="text-sm text-neutral-400">Традиционный картофель фри.</p>
-                        </div>
-                    </div>
-                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">150</span>
-                </div>
-            </div>
-        </section>
-        <!-- Sauces section -->
-        <section>
-            <h2 class="text-xl md:text-2xl font-semibold tracking-wider uppercase text-center mb-6">С О У С Ы</h2>
-            <div class="space-y-6">
-                <!-- Menu Item: Garlic Sauce -->
-                <div class="flex flex-row justify-between items-center border-b border-neutral-700 pb-4">
-                    <div class="flex items-center gap-4">
-                        <img src="./optimized/garlic_souce.webp" alt="Чесночный соус GULLAM" class="w-20 h-20 rounded-full object-cover hidden sm:block">
-                        <div>
-                            <h3 class="text-lg font-medium mb-1">Чесночный соус GULLAM</h3>
-                            <p class="text-sm text-neutral-400">Фирменный чесночный соус.</p>
-                        </div>
-                    </div>
-                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">50</span>
-                </div>
-                <!-- Menu Item: Tomato Sauce -->
-                <div class="flex flex-row justify-between items-center border-b border-neutral-700 pb-4">
-                    <div class="flex items-center gap-4">
-                        <img src="./optimized/tomato_souce.webp" alt="Томатный соус heinz" class="w-20 h-20 rounded-full object-cover hidden sm:block">
-                        <div>
-                            <h3 class="text-lg font-medium mb-1">Томатный соус heinz</h3>
-                            <p class="text-sm text-neutral-400">Классический томатный соус heinz.</p>
-                        </div>
-                    </div>
-                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">50</span>
-                </div>
-                <!-- Menu Item: Cheese Sauce -->
-                <div class="flex flex-row justify-between items-center border-b border-neutral-700 pb-4">
-                    <div class="flex items-center gap-4">
-                        <img src="./optimized/cheese_souce.webp" alt="Сырный соус heinz" class="w-20 h-20 rounded-full object-cover hidden sm:block">
-                        <div>
-                            <h3 class="text-lg font-medium mb-1">Сырный соус heinz</h3>
-                            <p class="text-sm text-neutral-400">Классический сырный соус heinz.</p>
-                        </div>
-                    </div>
-                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">50</span>
-                </div>
-                <!-- Menu Item: Cheese Sauce -->
-                <div class="flex flex-row justify-between items-center border-b border-neutral-700 pb-4">
-                    <div class="flex items-center gap-4">
-                        <img src="./optimized/garlic_souce_heinz.webp" alt="Чесночный соус heinz" class="w-20 h-20 rounded-full object-cover hidden sm:block">
-                        <div>
-                            <h3 class="text-lg font-medium mb-1">Чесночный соус heinz</h3>
-                            <p class="text-sm text-neutral-400">Классический чесночный соус heinz.</p>
-                        </div>
-                    </div>
-                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">50</span>
-                </div>
-                <!-- Menu Item: Barbeque Sauce -->
-                <div class="flex flex-row justify-between items-center border-b border-neutral-700 pb-4">
-                    <div class="flex items-center gap-4">
-                        <img src="./optimized/barbecue_souce.webp" alt="Барбекью соус heinz" class="w-20 h-20 rounded-full object-cover hidden sm:block">
-                        <div>
-                            <h3 class="text-lg font-medium mb-1">Барбекью соус heinz</h3>
-                            <p class="text-sm text-neutral-400">Классический барбекью соус heinz.</p>
-                        </div>
-                    </div>
-                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">50</span>
-                </div>
-            </div>
-        </section>
-        <!-- Add-ons section -->
-        <section>
-            <h2 class="text-xl md:text-2xl font-semibold tracking-wider uppercase text-center m-6">Д О П О Л Н И Т Е Л Ь Н О</h2>
-            <div class="space-y-6">
-                <!-- Menu Item: Gloves -->
-                <div class="flex flex-row justify-between items-center border-b border-neutral-700 pb-4">
-                    <div class="flex items-center gap-4">
-                        <img src="./optimized/gloves.webp" alt="Перчатки" class="w-20 h-20 rounded-full object-cover hidden sm:block">
-                        <div>
-                            <h3 class="text-lg font-medium mb-1">Перчатки</h3>
-                            <p class="text-sm text-neutral-400">Одноразовые перчатки для удобства.</p>
-                        </div>
-                    </div>
-                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">10</span>
-                </div>
-                <!-- Menu Item: Wet Wipe -->
-                <div class="flex flex-row justify-between items-center border-b border-neutral-700 pb-4">
-                    <div class="flex items-center gap-4">
-                        <img src="./optimized/wipes.webp" alt="Влажная салфетка" class="w-20 h-20 rounded-full object-cover hidden sm:block">
-                        <div>
-                            <h3 class="text-lg font-medium mb-1">Влажная салфетка</h3>
-                            <p class="text-sm text-neutral-400">Освежающая влажная салфетка.</p>
-                        </div>
-                    </div>
-                    <span class="text-lg font-light mt-2 sm:mt-0 sm:ml-4">10</span>
-                </div>
-                <!-- Menu Item: Plastic Fork -->
-                <div class="flex flex-row justify-between items-center border-b border-neutral-700 pb-4 no-print">
-                    <div class="flex items-center gap-4">
-                        <img src="./optimized/fork.webp" alt="Пластиковая вилка" class="w-20 h-20 rounded-full object-cover hidden sm:block">
-                        <div>
-                            <h3 class="text-lg font-medium mb-1">Пластиковая вилка</h3>
-                            <p class="text-sm text-neutral-400">Одноразовая пластиковая вилка.</p>
-                        </div>
-                    </div>
-                    <span class="text-lg font-light mt-2 sm:mt-0 sm-ml-4">10</span>
-                </div>
-                <!-- Menu Item: Plastic Knife -->
-                <div class="flex flex-row justify-between items-center no-print">
-                    <div class="flex items-center gap-4">
-                        <img src="./optimized/knife.webp" alt="Пластиковый нож" class="w-20 h-20 rounded-full object-cover hidden sm:block">
-                        <div>
-                            <h3 class="text-lg font-medium mb-1">Пластиковый нож</h3>
-                            <p class="text-sm text-neutral-400">Одноразовый пластиковый нож.</p>
-                        </div>
-                    </div>
-                    <span class="text-lg font-light mt-2 sm:mt-0 sm-ml-4">10</span>
-                </div>
-            </div>
-        </section>
-        <!-- Footer -->
-        <footer class="mt-24 pt-8 w-1/2 self-center text-center border-t border-neutral-700 text-neutral-400 space-y-4">
-            <!-- Location -->
-            <div class="flex items-center justify-center space-x-2">
-                <svg fill="#a1a1a1" width="14px" height="14px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" stroke="#a1a1a1">
-                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                    <g id="SVGRepo_iconCarrier">
-                        <title></title>
-                        <g id="location">
-                            <path d="M16,1A11,11,0,0,0,5,12C5,23.24,15,30.51,15.42,30.81a1,1,0,0,0,1.16,0C17,30.51,27,23.24,27,12A11,11,0,0,0,16,1Zm0,16a5,5,0,1,1,5-5A5,5,0,0,1,16,17Z"></path>
-                        </g>
-                    </g>
-                </svg>
-                <a href="https://yandex.com/maps/-/CLqjaTO5" target="_blank" rel="noopener noreferrer" class="text-lg hover:underline">C. Валерик, ул. Гайрбекова, д. 64</a>
-            </div>
-            <!-- Phone Number -->
-            <div class="flex items-center justify-center space-x-2">
-                <svg width="14px" height="14px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#a1a1a1">
-                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                    <g id="SVGRepo_iconCarrier">
-                        <path d="M2.00589 4.54166C1.905 3.11236 3.11531 2 4.54522 2H7.60606C8.34006 2 9.00207 2.44226 9.28438 3.1212L10.5643 6.19946C10.8761 6.94932 10.6548 7.81544 10.0218 8.32292L9.22394 8.96254C8.86788 9.24798 8.74683 9.74018 8.95794 10.1448C10.0429 12.2241 11.6464 13.9888 13.5964 15.2667C14.008 15.5364 14.5517 15.4291 14.8588 15.0445L15.6902 14.003C16.1966 13.3687 17.0609 13.147 17.8092 13.4594L20.8811 14.742C21.5587 15.0249 22 15.6883 22 16.4238V19.5C22 20.9329 20.8489 22.0955 19.4226 21.9941C10.3021 21.3452 2.65247 13.7017 2.00589 4.54166Z" fill="#a1a1a1"></path>
-                    </g>
-                </svg>
-                <a href="tel:+79388895574" class="text-lg hover:underline">+7 (938) 889-55-74</a>
-            </div>
-        </footer>
+                        <span class="mt-2 sm:mt-0 sm:ml-4 text-lg font-bold text-red-400">${price}</span>
+                    </div>`;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const sectionsElement = document.querySelector('.sections');
+            let htmlContent = '';
+
+            // Add section titles as sticky/separate cards
+            const sections = [
+                {
+                    title: "БЛЮДА НА УГЛЯХ",
+                    items: [
+                        { 
+                            title: "Маринованная курица на углях", 
+                            description: "Сочная курица на углях.", 
+                            price: "900/1100", 
+                            image: './optimized/chicken_grill.webp',
+                            printable: true,
+                        },
+                        { 
+                            title: "Сочный стейк из говядины", 
+                            description: "Нежный говяжий стейк, обжаренный на углях.", 
+                            price: "800/900", 
+                            image: './optimized/steak_meat.webp',
+                            printable: true,
+                        },
+                        { 
+                            title: "Ароматный люля-кебаб", 
+                            description: "Кебаб из отборного фарша на углях.", 
+                            price: "500", 
+                            image: './optimized/kebab.webp',
+                            printable: true,
+                        },
+                        { 
+                            title: "Сочные грибы шампиньоны", 
+                            description: "Сочные грибы с дымком, маринованные в специях.", 
+                            price: "300", 
+                            image: './optimized/grilled_mushrooms.webp',
+                            printable: true,
+                        },
+                    ],
+                },
+                {
+                    title: "НАЦИОНАЛЬНЫЕ БЛЮДА",
+                    items: [
+                        { 
+                            title: 'Манты "По-Домашнему"', 
+                            description: "Сочные манты с говяжьим фаршем и луком, приготовленные на пару.", 
+                            price: "280", 
+                            image: './optimized/manty.webp',
+                            printable: true,
+                        },
+                        { 
+                            title: "Галушки с говядиной", 
+                            description: "Нежные галушки, подаются с крупными, ароматными кусками отварной говядины и бульоном.", 
+                            price: "650", 
+                            image: './optimized/galushki_s_govyadinoy.webp',
+                            printable: true,
+                        },
+                        { 
+                            title: "Галушки с курицей", 
+                            description: "Аппетитные галушки, тушенные в нежном сливочном соусе с кусочками куриного мяса.", 
+                            price: "550", 
+                            image: './optimized/galushki_s_kuricey.webp',
+                            printable: true,
+                        },
+                        { 
+                            title: "ЧӀепалг", 
+                            description: "Традиционный чеченский ЧӀепалг с творогом на кефирном тесте.", 
+                            price: "150", 
+                            image: './optimized/chepalg.webp',
+                            printable: true,
+                        },
+                        { 
+                            title: "Хингал", 
+                            description: "Тонкая лепешка (Хинкал) с нежным сладким пюре из тыквы.", 
+                            price: "150", 
+                            image: './optimized/hinkal.webp',
+                            printable: true,
+                        },
+                    ],
+                },
+                {
+                    title: "ЕВРОПЕЙСКИЕ БЛЮДА И ЗАКУСКИ",
+                    items: [
+                        // { 
+                        //     title: "Сэндвич с копчёной индейкой", 
+                        //     description: "Сочная индейка для легкого перекуса.", 
+                        //     price: "230", 
+                        //     image: './optimized/sanwich.webp',
+                        //     printable: true,
+                        // },
+                        { 
+                            title: "Фетучини с курицей", 
+                            description: "Классическая паста, курица и шампиньоны в бархатном сливочном соусе.", 
+                            price: "400", 
+                            image: './optimized/fetuchini.webp',
+                            printable: true,
+                        },
+                        { 
+                            title: 'Рис "Солнечный Гарнир"', 
+                            description: "Яркий, ароматный рис с куркумой и добавлением сочной кукурузы.", 
+                            price: "150", 
+                            image: './optimized/rice.webp',
+                            printable: true,
+                        },
+                        { 
+                            title: "Крошка картошка", 
+                            description: "Нежная запеченная картошка с сыром.", 
+                            price: "250", 
+                            image: './optimized/potato.webp',
+                            printable: true,
+                        },
+                        { 
+                            title: 'Картофель фри "Начос"', 
+                            description: "Хрустящий картофель фри, покрытый сырным соусом.", 
+                            price: "280", 
+                            image: './optimized/french_fries_with_cheese.webp',
+                            printable: true,
+                        },
+                    ],
+                },
+                {
+                    title: "САЛАТЫ",
+                    items: [
+                        { 
+                            title: "Салат цезарь с курицей'", 
+                            description: "Свежий салат с курицей-гриль, сухариками и зеленью.", 
+                            price: "290", 
+                            image: './optimized/cezar.webp',
+                            printable: true,
+                        },
+                        { 
+                            title: "Летний салат'", 
+                            description: "Легкий салат из свежих овощей и зелени.", 
+                            price: "270", 
+                            image: './optimized/summer_salad.webp',
+                            printable: true,
+                        },
+                    ],
+                },
+                {
+                    title: "ПИЦЦА",
+                    items: [
+                        { 
+                            title: "Пицца ассорти", 
+                            description: "Мясное ассорти с говядиной и курицей.", 
+                            price: "470", 
+                            image: './optimized/pizza_assorti.webp',
+                            printable: true,
+                        },
+                        { 
+                            title: "Пицца с курицей и грибами", 
+                            description: "Нежная курица и грибы под сырной корочкой.", 
+                            price: "470", 
+                            image: './optimized/pizza_chicken_with_mushrooms.webp',
+                            printable: true,
+                        },
+                        { 
+                            title: 'Пицца мясная "Мясной Пир"', 
+                            description: "Сытная пицца с сочной говядиной.", 
+                            price: "470", 
+                            image: './optimized/pizza_beef_meat.webp',
+                            printable: true,
+                        },
+                        { 
+                            title: 'Пицца сырная "Маргарита"', 
+                            description: "Сырная пицца с насыщенным вкусом.", 
+                            price: "470", 
+                            image: './optimized/pizza_cheese.webp',
+                            printable: true,
+                        },
+                        { 
+                            title: "Пицца грибная", 
+                            description: "Сочные шампиньоны на тонком тесте.", 
+                            price: "470", 
+                            image: './optimized/pizza_mushroom.webp',
+                            printable: true,
+                        },
+                        { 
+                            title: "Пицца пепперони", 
+                            description: "Классическая пицца с салями пепперони.", 
+                            price: "470", 
+                            image: './optimized/pizza_pepperoni.webp',
+                            printable: true,
+                        },
+                    ],
+                },
+                {
+                    title: "ФАСТ ФУД",
+                    items: [
+                        { 
+                            title: "Гиро на углях'", 
+                            description: "Сочное мясо, картошка фри и фирменный соус.", 
+                            price: "350", 
+                            image: './optimized/giro.webp',
+                            printable: true,
+                        },
+                        { 
+                            title: "Кинкер", 
+                            description: "Вкусный и сочный кинкер со стрипсами.", 
+                            price: "250", 
+                            image: './optimized/kinker.webp',
+                            printable: true,
+                        },
+                        { 
+                            title: "Донер", 
+                            description: "Неповторимый вкус турецкого донара.", 
+                            price: "200", 
+                            image: './optimized/donar.webp',
+                            printable: true,
+                        },
+                        { 
+                            title: "Шаурма на углях", 
+                            description: "Курица на углях и свежие овощи.", 
+                            price: "200", 
+                            image: './optimized/shawerma.webp',
+                            printable: true,
+                        },
+                        { 
+                            title: "Бургер",
+                            description: "Сочная мясная котлета и сыр.", 
+                            price: "150/200", 
+                            image: './optimized/burger.webp',
+                            printable: true,
+                        },
+                        { 
+                            title: "Наггетсы",
+                            description: "Хрустящие куриные наггетсы в панировке.", 
+                            price: "150/250", 
+                            image: './optimized/nuggets.webp',
+                            printable: true,
+                        },
+                        { 
+                            title: "Крылышки",
+                            description: "Сочные куриные крылышки, обжаренные до золотистой корочки.", 
+                            price: "150/250", 
+                            image: './optimized/wings.webp',
+                            printable: true,
+                        },
+                        { 
+                            title: "Лаваш",
+                            description: "Хлеб всему голова :)", 
+                            price: "50", 
+                            image: './optimized/lawash.webp',
+                            printable: true,
+                        },
+                        { 
+                            title: "Картошка по-деревенски",
+                            description: "Крупные дольки картофеля по-деревенски.", 
+                            price: "150", 
+                            image: './optimized/po_derevenski.webp',
+                            printable: true,
+                        },
+                        { 
+                            title: "Картошка фри",
+                            description: "Традиционный картофель фри.", 
+                            price: "150", 
+                            image: './optimized/french_fries.webp',
+                            printable: true,
+                        },
+                    ],
+                },
+                {
+                    title: "СОУСЫ",
+                    items: [
+                        { 
+                            title: "Чесночный соус GULLAM", 
+                            description: "Фирменный чесночный соус.", 
+                            price: "50", 
+                            image: './optimized/garlic_souce.webp',
+                            printable: true,
+                        },
+                        { 
+                            title: "Томатный соус heinz", 
+                            description: "Классический томатный соус heinz.", 
+                            price: "50", 
+                            image: './optimized/tomato_souce.webp',
+                            printable: true,
+                        },
+                        { 
+                            title: "Сырный соус heinz", 
+                            description: "Классический сырный соус heinz.", 
+                            price: "50", 
+                            image: './optimized/cheese_souce.webp',
+                            printable: true,
+                        },
+                        { 
+                            title: "Чесночный соус heinz", 
+                            description: "Классический чесночный соус heinz.", 
+                            price: "50", 
+                            image: './optimized/garlic_souce_heinz.webp',
+                            printable: true,
+                        },
+                        { 
+                            title: "Барбекью соус heinz", 
+                            description: "Классический барбекью соус heinz.", 
+                            price: "50", 
+                            image: './optimized/barbecue_souce.webp',
+                            printable: true,
+                        },
+                    ],
+                },
+                {
+                    title: "ДОПОЛЬНИТЕЛЬНО",
+                    items: [
+                        { 
+                            title: "Перчатки", 
+                            description: "Одноразовые перчатки для вашего удобства.", 
+                            price: "10", 
+                            image: './optimized/gloves.webp',
+                            printable: true,
+                        },
+                        { 
+                            title: "Влажная салфетка", 
+                            description: "Освежающая влажная салфетка.", 
+                            price: "10", 
+                            image: './optimized/wipes.webp',
+                            printable: true,
+                        },
+                        { 
+                            title: "Пластиковая вилка", 
+                            description: "Одноразовая пластиковая вилка.", 
+                            price: "10", 
+                            image: './optimized/fork.webp',
+                            printable: false,
+                        },
+                        { 
+                            title: "Пластиковый нож", 
+                            description: "Одноразовый пластиковый нож.", 
+                            price: "10", 
+                            image: './optimized/knife.webp',
+                            printable: false,
+                        },
+                    ],
+                }
+            ];
+
+            sections.forEach((section, index) => {
+                const title = section.title.split('').join(' ').replace(/\s/g, '&nbsp;')
+
+                const items = section.items.map((item, index) => createItem({...item, isLast: section.items.length-1 === index}));
+
+                htmlContent += createSection(title, items.join(''));
+            });
+
+            sectionsElement.innerHTML = htmlContent;
+        });
+        </script>
     </div>
+    <!-- Footer -->
+    <footer class="text-2xl my-24 pt-8 w-full md:w-1/4 mx-auto text-center border-t border-neutral-700 text-neutral-400 space-y-4">
+        <!-- Location -->
+        <div class="flex items-center justify-center space-x-2">
+            <svg fill="#a1a1a1" width="16px" height="16px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16,1A11,11,0,0,0,5,12C5,23.24,15,30.51,15.42,30.81a1,1,0,0,0,1.16,0C17,30.51,27,23.24,27,12A11,11,0,0,0,16,1Zm0,16a5,5,0,1,1,5-5A5,5,0,0,1,16,17Z"></path>
+            </svg>
+            <a href="https://yandex.com/maps/-/CLqjaTO5" target="_blank" rel="noopener noreferrer" class="text-lg hover:underline">C. Валерик, ул. Гайрбекова, д. 64</a>
+        </div>
+        <!-- Phone Number -->
+        <div class="flex items-center justify-center space-x-2">
+            <svg width="16px" height="16px" viewBox="0 0 24 24" fill="#a1a1a1" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2.00589 4.54166C1.905 3.11236 3.11531 2 4.54522 2H7.60606C8.34006 2 9.00207 2.44226 9.28438 3.1212L10.5643 6.19946C10.8761 6.94932 10.6548 7.81544 10.0218 8.32292L9.22394 8.96254C8.86788 9.24798 8.74683 9.74018 8.95794 10.1448C10.0429 12.2241 11.6464 13.9888 13.5964 15.2667C14.008 15.5364 14.5517 15.4291 14.8588 15.0445L15.6902 14.003C16.1966 13.3687 17.0609 13.147 17.8092 13.4594L20.8811 14.742C21.5587 15.0249 22 15.6883 22 16.4238V19.5C22 20.9329 20.8489 22.0955 19.4226 21.9941C10.3021 21.3452 2.65247 13.7017 2.00589 4.54166Z"></path>
+            </svg>
+            <a href="tel:+79388895574" class="text-lg hover:underline">+7 (938) 889-55-74</a>
+        </div>
+    </footer>
 </body>
 
 </html>
